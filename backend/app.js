@@ -9,9 +9,9 @@ var passport = require('passport');
 var cors = require('cors');
 
 var index = require('./routes/index');
-var users = require('./routes/users')
-var addBook = require('./routes/addBook');
-var redirect = require('./routes/redirect');
+// var users = require('./routes/users')
+// var addBook = require('./routes/addBook');
+// var redirect = require('./routes/redirect');
 
 app.options('*', cors());
 
@@ -26,8 +26,8 @@ app.get('/test', function(req, res) {
 })
 
 app.use('/', index);
-app.use('/users', users);
-app.use('*', redirect);
+// app.use('/users', users);
+// app.use('*', redirect);
 
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -53,4 +53,7 @@ app.use(function(err, req, res, next) {
   });
 });
 
-module.exports = app;
+console.log("Listening on port 8080..")
+app.listen(8080)
+
+// module.exports = app;
