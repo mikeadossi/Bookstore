@@ -15,7 +15,7 @@ export default class LogIn extends React.Component{
         <div className="logIn_input_containers">
           <div className="logIn_labels">enter password: </div>
           <input className="logIn_password_input logIn_input" placeholder="password" />
-        </div> 
+        </div>
         <button className="logIn_logIn_submit">submit</button>
       </div>
       </div>
