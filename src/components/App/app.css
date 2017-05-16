@@ -16,6 +16,10 @@ button:hover{
   cursor:pointer;
 }
 
+button:active{
+  background-color:tan;
+}
+
 input{
   padding:4px;
 }

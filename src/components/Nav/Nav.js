@@ -51,7 +51,7 @@ export default class Nav extends React.Component{
           <div className="nav_wide_links_container">
             <Link to="/access" className="nav_wide_links nav_wide_logIn">log in</Link>
             <Link to="/access" className="nav_wide_links">sign up</Link>
-            <Link to="/home" className="nav_wide_links">home</Link>
+            <Link to="/about" className="nav_wide_links">about</Link>
             <Link to="/account" className="nav_wide_links">account</Link>
           </div>
         </div>
@@ -63,7 +63,7 @@ export default class Nav extends React.Component{
           <div className={this.state.menu_open}>
             <Link to="/access"><div className="nav_links">log in</div></Link>
             <Link to="/access"><div className="nav_links">sign up</div></Link>
-            <Link to="/home"><div className="nav_links">home</div></Link>
+            <Link to="/about"><div className="nav_links">about</div></Link>
             <Link to="/account"><div className="nav_links">account</div></Link>
           </div>
         </div>
