@@ -22,12 +22,16 @@
   font-family:arial;
   border-bottom:1px solid white;
   padding:8px;
-  color:grey;
+  color:gainsboro;
 }
 
 .nav_links:hover{
   cursor:pointer;
   color:white;
+}
+
+.nav_links:active{
+  color:tan;
 }
 
 .nav_input{
@@ -38,13 +42,14 @@
 .nav_title{
   margin-left:10%;
   display:inline-block;
+  color:white;
 }
 
 .nav_title:hover, .nav_wide_links:hover{
   cursor:pointer;
 }
 
-.nav_wide_links_container, .nav_top_hamburger, .nav_hamburger, .nav_link_bottom, .nav_links_container{
+.nav_wide_links_container, .nav_top_hamburger, .nav_hamburger, .nav_link_bottom, .nav_links_search{
   display:none;
 }
 
@@ -60,18 +65,24 @@
   margin-bottom:-1px;
 }
 
+.display_block{
+  display:block;
+}
+
+.display_none{
+  display:none;
+}
 
 
 
 @media (min-width: 0px) and (max-width:454px) {
-  .nav_links_container, .nav_link_bottom{
+  .nav_links_container{
     display:block;
   }
   .nav_link_bottom{
     position: absolute;
     width: 100%;
     background-color:rgb(156,0,0);
-    display:none;
   }
   .nav_title{
     width:70%;
@@ -79,6 +90,7 @@
   .nav_hamburger{
     display:inline-block;
     width:20%;
+    color:white;
   }
   .nav_hamburger:hover{
     cursor:pointer;
@@ -86,11 +98,16 @@
   .nav_top_search{
     display:none;
   }
+  .nav_links_search{
+    display:block;
+  }
 }
 
 @media (min-width: 454px) and (max-width:599px) {
   .nav_top_container{
     background-color:maroon;
+    position:absolute;
+    z-index:2;
   }
   .nav_top_search{
     display:inline-block;
@@ -106,6 +123,11 @@
   .nav_top_hamburger:hover{
     cursor:pointer;
   }
+  .nav_link_bottom{
+    position:absolute;
+    width:100%;
+    background-color:rgb(156,0,0);
+  }
 }
 
 @media (min-width: 599px) {
@@ -115,6 +137,7 @@
   .nav_title{
     width:33%;
     margin-left:10px;
+    font-size:26px;
   }
   .nav_top_search{
     display:inline-block;
