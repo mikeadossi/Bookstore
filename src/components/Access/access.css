@@ -1,0 +1,18 @@
+
+
+/*<div className="access_sign_up_container access_container">
+  <div className="access_title">Sign Up</div>
+  <div className="access_input_containers">
+    <div className="access_labels">username: </div>
+    <input className="signup_login_email_input access_input" placeholder="enter email address" />
+  </div>
+  <div className="access_input_containers">
+    <div className="access_labels">enter password: </div>
+    <input className="signup_login_password_input access_input" placeholder="password" />
+  </div>
+  <div className="access_input_containers">
+    <div className="access_labels">re-enter password: </div>
+    <input className="signup_login_password_input access_input" placeholder="password" />
+  </div>
+  <button className="signup_login_submit">submit</button>
+</div>*/
