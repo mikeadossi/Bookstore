@@ -10,3 +10,12 @@
   bottom:0;
   right:0;
 }
+
+.footer_text{
+  display:inline-block;
+}
+
+.footer_heart{
+  margin-left: 3px;
+  margin-right: 3px;
+}
