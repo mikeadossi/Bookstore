@@ -23,3 +23,7 @@ input{
 input:focus, button:focus{
   outline: none;
 }
+
+a{
+  text-decoration:none;
+}

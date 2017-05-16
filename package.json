@@ -37,6 +37,8 @@
     "react-router-dom": "*",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2",
-    "react-history": "*"
+    "react-history": "*",
+    "react-router": "^4.0.0",
+    "react-router-dom": "*"
   }
 }

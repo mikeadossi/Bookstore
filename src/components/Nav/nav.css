@@ -30,6 +30,10 @@
   color:white;
 }
 
+.nav_links:active{
+  color:tan;
+}
+
 .nav_input{
   width: 68%;
   max-width: 220px;
@@ -38,6 +42,7 @@
 .nav_title{
   margin-left:10%;
   display:inline-block;
+  color:white;
 }
 
 .nav_title:hover, .nav_wide_links:hover{
@@ -115,6 +120,7 @@
   .nav_title{
     width:33%;
     margin-left:10px;
+    font-size:26px;
   }
   .nav_top_search{
     display:inline-block;
