@@ -5,11 +5,8 @@
 .signup_container{
   text-align:center;
 }
-.signup_log_in_container{
-  display:none;
-}
 
-.signup_container, .signup_log_in_container{
+.signup_container{
   padding: 9px;
   font-size: 28px;
   font-family: arial;
@@ -24,7 +21,7 @@
   min-width:180px;
 }
 
-.signup_login_submit{
+.signup_submit_btn{
   display:block;
   text-align:center;
   border-top:5px;
@@ -33,6 +30,7 @@
 
 .signup_title{
   margin-bottom:10px;
+  color:tan;
 }
 
 .signup_labels{
