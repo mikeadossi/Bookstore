@@ -8,6 +8,7 @@ import Footer from 'components/Footer/Footer';
 import Listing from 'components/Listing/Listing';
 import Account from 'components/Account/Account';
 import Details from 'components/Details/Details';
+import About from 'components/About/About';
 import { Link, Route, HashRouter, Switch } from 'react-router-dom';
 
 export default class App extends React.Component{
@@ -23,6 +24,7 @@ export default class App extends React.Component{
             <Route exact path="/account" component={ Account } />
             <Route exact path="/details" component={ Details } />
             <Route exact path="/access" component={ Access } />
+          <Route exact path="/about" component={ About } />
           </Switch>
         </HashRouter>
       </div>

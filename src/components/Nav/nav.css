@@ -22,7 +22,7 @@
   font-family:arial;
   border-bottom:1px solid white;
   padding:8px;
-  color:gainsboro;
+  color:tan;
 }
 
 .nav_links:hover{
@@ -53,8 +53,12 @@
   display:none;
 }
 
+.nav_hamburger, .nav_top_hamburger{
+  color:tan;
+}
+
 .nav_wide_links{
-  color:lightgrey;
+  color:tan;
 }
 
 .nav_wide_links:hover{
@@ -90,7 +94,6 @@
   .nav_hamburger{
     display:inline-block;
     width:20%;
-    color:white;
   }
   .nav_hamburger:hover{
     cursor:pointer;
@@ -118,7 +121,6 @@
   }
   .nav_top_hamburger{
     display:inline-block;
-    color:white;
   }
   .nav_top_hamburger:hover{
     cursor:pointer;
@@ -133,6 +135,9 @@
 @media (min-width: 599px) {
   .nav_top_container{
     background-color:maroon;
+  }
+  .nav_link_bottom{
+    display:none;
   }
   .nav_title{
     width:33%;
