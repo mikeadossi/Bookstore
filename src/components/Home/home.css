@@ -1,0 +1,11 @@
+.home_welcome{
+  color:tan;
+  height: 65vh;
+  text-align: center;
+  font-size:30px;
+}
+
+.home_container{
+  background-color:white;
+  padding-top:35vh;
+}
