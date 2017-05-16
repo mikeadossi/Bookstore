@@ -3,6 +3,7 @@
   color:white;
   padding:10px;
   position:fixed;
+  z-index:2;
   width:97.8%;
   box-shadow:0 4px 6px -6px #222;
   font-family:arial;
@@ -109,7 +110,7 @@
 @media (min-width: 454px) and (max-width:599px) {
   .nav_top_container{
     background-color:maroon;
-    position:absolute;
+    position:fixed;
     z-index:2;
   }
   .nav_top_search{
