@@ -1,0 +1,17 @@
+.admin_comp_container{
+  padding-top: 20vh;
+  padding-bottom: 40vh;
+  text-align:center;
+}
+
+.admin_container{
+  text-align:center;
+  padding: 9px;
+  font-family: arial;
+}
+
+.admin_title{
+  margin-bottom:10px;
+  color:tan;
+  font-size: 28px;
+}
