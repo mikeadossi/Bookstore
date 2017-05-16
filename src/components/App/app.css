@@ -1,3 +1,21 @@
 body{
   margin:0;
 }
+
+button{
+  border:none;
+  color:grey;
+  background-color:gainsboro;
+  border-radius:2px;
+  margin-left:5px;
+  padding:6px;
+}
+
+button:hover{
+  color:white;
+  cursor:pointer;
+}
+
+input:focus, button:focus{
+  outline: none;
+}
