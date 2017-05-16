@@ -20,7 +20,7 @@ export default class SignUp extends React.Component{
           <div className="signup_labels">re-enter password: </div>
         <input className="signup_reenter_password_input signup_input" placeholder="password" />
         </div>
-        <button className="signup_signup_submit">submit</button>
+        <button className="signup_submit_btn">submit</button>
       </div>
       </div>
     );

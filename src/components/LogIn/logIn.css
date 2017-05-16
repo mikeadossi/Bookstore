@@ -1,0 +1,42 @@
+.logIn_comp_container{
+  padding-top: 20vh;
+  padding-bottom: 40vh;
+}
+.logIn_container{
+  text-align:center;
+}
+
+.logIn_container{
+  padding: 9px;
+  font-size: 28px;
+  font-family: arial;
+}
+
+.logIn_input{
+  display:inline-block;
+  width:40%;
+  margin:auto;
+  margin-bottom:10px;
+  max-width:230px;
+  min-width:180px;
+}
+
+.logIn_submit_btn{
+  display:block;
+  text-align:center;
+  border-top:5px;
+  margin:auto;
+}
+
+.logIn_title{
+  margin-bottom:10px;
+  color:tan;
+}
+
+.logIn_labels{
+  font-size:12px;
+  display:inline-block;
+  width:20%;
+  text-align:right;
+  margin-right:5px;
+}
