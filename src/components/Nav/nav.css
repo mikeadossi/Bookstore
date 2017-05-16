@@ -1,0 +1,13 @@
+.nav_container{
+  background-color:maroon;
+  color:white;
+  padding:10px;
+  position:fixed;
+  width:100%;
+  box-shadow:0 4px 6px -6px #222;
+  font-family:arial;
+}
+
+.nav_title{
+  margin-left:10%;
+}
