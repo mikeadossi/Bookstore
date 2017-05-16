@@ -7,13 +7,14 @@ import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import Listing from 'components/Listing/Listing';
 import Account from 'components/Account/Account';
+import Details from 'components/Details/Details';
 
 export default class App extends React.Component{
   render(){
     return(
       <div className="app_container">
         <Nav />
-        <Account />
+        <Details />
         <Footer />
       </div>
     );
