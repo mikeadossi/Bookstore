@@ -6,13 +6,14 @@ import Access from 'components/Access/Access';
 import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import Listing from 'components/Listing/Listing';
+import Account from 'components/Account/Account';
 
 export default class App extends React.Component{
   render(){
     return(
       <div className="app_container">
         <Nav />
-        <Listing />
+        <Account />
         <Footer />
       </div>
     );
