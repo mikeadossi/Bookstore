@@ -4,7 +4,7 @@
   padding:10px;
   padding-top:20px;
   font-size:10px;
-  text-align:center; 
+  text-align:center;
   left:0;
   bottom:0;
   right:0;
@@ -17,4 +17,18 @@
 .footer_heart{
   margin-left: 3px;
   margin-right: 3px;
+}
+
+.footer_link{
+  margin-right:5px;
+  font-size:13px;
+  color:grey;
+}
+
+.footer_link:hover{
+  cursor:pointer;
+}
+
+.footer_link:active{
+  color:white;
 }
