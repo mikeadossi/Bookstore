@@ -28,9 +28,15 @@ export default class App extends React.Component{
         console.log(json)
         this.setState({ allBooks: json.data })
       })
+      .catch((error) => {
+        this.setState({
+          error: error
+        })
+      })
   }
 
   render(){
+    console.log('app render => ',this.state);
     const allBooks = this.state.allBooks
     const BooksListComponent = () => <BooksList allBooks={allBooks} />
 
@@ -39,7 +45,7 @@ export default class App extends React.Component{
       <div className="app_container">
         <HashRouter>
           <Switch>
-            <Route exact path="/" component={ Home } />
+            <Route exact path="/" component={ () => <Home allBooks={allBooks} /> } />
             <Route exact path="/home/:id" component={ Home } />
             <Route exact path="/login" component={ Access } />
             <Route exact path="/listing" component={ Listing } />
@@ -47,7 +53,7 @@ export default class App extends React.Component{
             <Route exact path="/details" component={ Details } />
             <Route exact path="/access" component={ Access } />
             <Route exact path="/about" component={ About } />
-          <Route exact path="/bookList" component={ BooksListComponent }/>
+            <Route path="/bookList" component={ BooksListComponent }/>
           </Switch>
         </HashRouter>
       </div>
