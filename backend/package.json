@@ -4,7 +4,7 @@
   "private": false,
   "scripts": {
     "test": "mocha test/tests.js",
-    "start": "nodemon app",
+    "start": "nodemon app.js",
     "create:db": "createdb bookstore_db",
     "reset:db": "psql -d bookstore_db -f database/schema.sql"
   },
@@ -14,11 +14,12 @@
     "cookie-parser": "~1.4.3",
     "cors": "*",
     "debug": "~2.2.0",
-    "cors": "*",
     "express": "~4.14.0",
+    "express-session": "*",
     "jade": "~1.11.0",
     "morgan": "~1.7.0",
     "nodemon": "^1.11.0",
+    "passport": "^0.3.2",
     "pg-promise": "^3.2.3",
     "serve-favicon": "~2.3.0"
   }

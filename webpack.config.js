@@ -9,7 +9,7 @@ module.exports = {
         './src'
     ],
     output: {
-        path: path.join(__dirname, 'public'),
+        path: path.join(__dirname, 'backend/public'),
         filename: 'bundle.js'
     },
     resolve: { // webpack looks for the files to bundle together
