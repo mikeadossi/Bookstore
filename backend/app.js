@@ -8,6 +8,9 @@ var session = require('express-session');
 var passport = require('passport');
 var cors = require('cors');
 
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'pug');
+
 var index = require('./routes/index');
 // var users = require('./routes/users')
 // var addBook = require('./routes/addBook');
@@ -20,6 +23,17 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.use( ( request, response, next ) => {
+
+    if (request.method === "OPTIONS") {
+      response.header('Access-Control-Allow-Origin', request.headers.origin)
+    } else {
+      response.header('Access-Control-Allow-Origin', '*')
+    }
+
+    next()
+})
 
 app.get('/test', function(req, res) {
   res.json({foo: 'bar'})
