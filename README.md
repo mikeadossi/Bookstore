@@ -77,4 +77,4 @@ See the app running on http://localhost:8080
  - [ ] Users with role reader can only view and search for books.
  - [ ] Users with role clerk can edit books in addition to viewing/searching.
  - [ ] Users with role admin can perform all actions (create, read, update, delete) with books.
- - [ ] Books have a price, cover image, publisher, and ISBN number.
+ - [x] Books have a price, cover image, publisher, and ISBN number.
