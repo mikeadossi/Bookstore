@@ -49,8 +49,8 @@ export default class Nav extends React.Component{
           </div>
           <div className={this.state.menu_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
           <div className="nav_wide_links_container">
-            <Link to="/access" className="nav_wide_links nav_wide_logIn">log in</Link>
-            <Link to="/access" className="nav_wide_links">sign up</Link>
+            <Link to="/logIn" className="nav_wide_links nav_wide_logIn">log in</Link>
+            <Link to="/signUp" className="nav_wide_links">sign up</Link>
             <Link to="/about" className="nav_wide_links">about</Link>
             <Link to="/account" className="nav_wide_links">account</Link>
           </div>
@@ -61,8 +61,8 @@ export default class Nav extends React.Component{
             <button className="nav_search_btn">submit</button>
           </div>
           <div className={this.state.menu_open}>
-            <Link to="/access"><div className="nav_links">log in</div></Link>
-            <Link to="/access"><div className="nav_links">sign up</div></Link>
+            <Link to="/logIn"><div className="nav_links">log in</div></Link>
+            <Link to="/signUp"><div className="nav_links">sign up</div></Link>
             <Link to="/about"><div className="nav_links">about</div></Link>
             <Link to="/account"><div className="nav_links">account</div></Link>
           </div>
