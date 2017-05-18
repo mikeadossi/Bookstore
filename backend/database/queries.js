@@ -24,6 +24,21 @@ function getAllBooks(req, res, next) {
   });
 }
 
+function getBooks(req, res, next, id) {
+  db.any('select * from books where id = $1',[id])
+  .then(function (data) {
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data,
+        message: 'Retrieved ALL books'
+      });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+}
+
 
 
 module.exports = { getAllBooks: getAllBooks };
