@@ -41,7 +41,7 @@ export default class Nav extends React.Component{
     return(
       <div className="nav_container">
         <div className="nav_top_container">
-          <Link to="/home" className="nav_title">Bookstore</Link>
+          <Link to="/" className="nav_title">Bookstore</Link>
           <div className={this.state.menu_wide_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
           <div className="nav_top_search">
             <input className="nav_input" placeholder="search" />
