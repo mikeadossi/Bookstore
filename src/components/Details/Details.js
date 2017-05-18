@@ -6,6 +6,7 @@ import Footer from 'components/Footer/Footer';
 export default class Details extends React.Component{
 
   render(){
+    console.log('props => ',this.props)
     return(
       <div>
         <Nav />

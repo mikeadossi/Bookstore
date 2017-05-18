@@ -10,7 +10,7 @@ import Account from 'components/Account/Account';
 import Details from 'components/Details/Details';
 import About from 'components/About/About';
 import BooksList from 'components/BooksList/BooksList';
-import { Link, Route, HashRouter, Switch } from 'react-router-dom';
+import { Link, Route, BrowserRouter, Switch } from 'react-router-dom';
 
 export default class App extends React.Component{
   constructor(props) {
@@ -43,19 +43,20 @@ export default class App extends React.Component{
 
     return(
       <div className="app_container">
-        <HashRouter>
+        <BrowserRouter>
           <Switch>
             <Route exact path="/" component={ () => <Home allBooks={allBooks} /> } />
-            <Route exact path="/home/:id" component={ Home } />
+            <Route exact path="/home" component={ Home } />
             <Route exact path="/login" component={ Access } />
             <Route exact path="/listing" component={ Listing } />
             <Route exact path="/account" component={ Account } />
             <Route exact path="/details" component={ Details } />
             <Route exact path="/access" component={ Access } />
             <Route exact path="/about" component={ About } />
+            <Route path="/details/:id" component={ Details } />
             <Route path="/bookList" component={ BooksListComponent }/>
           </Switch>
-        </HashRouter>
+        </BrowserRouter>
       </div>
     );
   };
