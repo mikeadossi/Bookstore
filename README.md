@@ -1,7 +1,9 @@
 # Bookstore
 A bookstore app built with PostgreSQL, Express and React.
 
-## Installation
+
+## Install and Run App
+
 
 ### Run frontend
 
@@ -31,6 +33,7 @@ To run the backend:
 ```
  $ npm start
 ```
+
 
 ## Specifications
 
