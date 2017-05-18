@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link }  from 'react-router-dom';
 
 export default class IndividualBook extends React.Component{
   constructor(props) {
@@ -7,10 +8,10 @@ export default class IndividualBook extends React.Component{
 
 
   renderBookSection() {
-    const { title, image_url, description, isbn, author_name } = this.props
+    const { id, title, image_url, description, isbn, author_name } = this.props
     return( <td>
       <div>
-        {title}
+        <Link to={"/details/"+id}>{title}</Link>
       </div>
     </td> )
   }

@@ -43,6 +43,10 @@ app.use('/', index);
 // app.use('/users', users);
 // app.use('*', redirect);
 
+app.get('*', ( request, response, next) => { // handle all routes with '*'
+  response.sendFile(__dirname+'/public/index.html')
+})
+
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -66,6 +70,8 @@ app.use(function(err, req, res, next) {
     message: err.message
   });
 });
+
+
 
 console.log("Listening on port 8080..")
 app.listen(8080)
