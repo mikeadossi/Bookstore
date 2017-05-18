@@ -11,7 +11,7 @@ export default class Access extends React.Component{
     return(
       <div className="access_comp_container">
         <Nav />
-          <LogIn />
+        <SignUp />
         <Footer />
       </div>
     );
