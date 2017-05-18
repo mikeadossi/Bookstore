@@ -24,8 +24,9 @@ function getAllBooks(req, res, next) {
   });
 }
 
-function getBooks(req, res, next, id) {
-  db.any('select * from books where id = $1',[id])
+function getBooks(req, res, next) {
+  var bookId = parseInt(req.params.id)
+  db.one('select * from books where id = $1', bookId)
   .then(function (data) {
     res.status(200)
       .json({
@@ -41,4 +42,4 @@ function getBooks(req, res, next, id) {
 
 
 
-module.exports = { getAllBooks: getAllBooks };
+module.exports = { getAllBooks, getBooks };
