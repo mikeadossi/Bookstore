@@ -3,7 +3,7 @@ A bookstore app built with PostgreSQL, Express and React.
 
 ## Installation
 
-### run frontend
+### Run frontend
 
 After cloning down the app to your computer navigate to the projects root directory in your CLI and run the following commands:
 
@@ -16,7 +16,7 @@ To run the frontend, do the following in the projects main root directory:
   $ webpack
   $ webpack -w
 ```
-### run backend 
+### Run backend 
 
 You will also need to run the backend server. 
 To get the backend setup correctly run the following commands once inside the backend folder:
