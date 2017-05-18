@@ -1,17 +1,17 @@
-var promise = require('bluebird');
+const promise = require('bluebird');
 
-var options = {
+const options = {
   promiseLib: promise
 };
 
-var pgp = require('pg-promise')(options);
-var connectionString = `postgres://${process.env.USER}@localhost:5432/bookstore_db`;
-var db = pgp(connectionString);
+const pgp = require('pg-promise')(options);
+const connectionString = `postgres://${process.env.USER}@localhost:5432/bookstore_db`;
+const db = pgp(connectionString);
 
 
 function getAllBooks(req, res, next) {
-  var result,
-      query = req.query.query;
+  const result = req.query.query;
+  const query = req.query.query;
 
   if (query) {
     result = db.any("SELECT * FROM books WHERE title = $1 OR genre = $1 OR isbn = $1 OR author_name = $1", [query])
@@ -33,7 +33,7 @@ function getAllBooks(req, res, next) {
 }
 
 function getBooks(req, res, next) {
-  var bookId = parseInt(req.params.id)
+  const bookId = parseInt(req.params.id)
   db.one('select * from books where id = $1', bookId)
   .then(function (data) {
     res.status(200)
@@ -48,4 +48,28 @@ function getBooks(req, res, next) {
   });
 }
 
-module.exports = { getAllBooks: getAllBooks, getBooks: getBooks };
+function addUser(req, res, next) {
+  const username = req.params.username
+  const password = req.params.password
+
+  if (username, password){
+    result = db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password]);
+  } else {
+    console.log('username or password not given');
+    return;
+  }
+
+  result.then(function (data) {
+    res.status(200)
+      .json({
+        status: 'success',
+        data: data,
+        message: 'added user'
+      });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+}
+
+module.exports = { getAllBooks: getAllBooks, getBooks: getBooks, addUser: addUser };
