@@ -2,7 +2,7 @@ import './home.css'
 import React from 'react';
 import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
-import BooksList from 'components/BooksList/BooksList';
+import HomeBookList from 'components/HomeBookList/HomeBookList';
 
 export default class Home extends React.Component{
 
@@ -19,7 +19,7 @@ export default class Home extends React.Component{
         <Nav />
           <div className="home_container">
             <div className="home_welcome">Welcome</div>
-            <BooksList allBooks={this.props.allBooks}/>
+            <HomeBookList allBooks={this.props.allBooks}/>
           </div>
         <Footer />
       </div>
