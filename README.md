@@ -1,6 +1,8 @@
 # Bookstore
 A bookstore app built with PostgreSQL, Express and React.
 
+<br/>
+<br/>
 
 ## Install and Run App
 
@@ -25,14 +27,15 @@ To get the backend setup correctly run the following commands once inside the ba
 
 ```
   $ npm install
-  $ npm create:db
-  $ npm reset:db
+  $ npm run create:db
+  $ npm run reset:db
 ```
 To run the backend:
 
 ```
  $ npm start
 ```
+See the app running on http://localhost:8080
 
 
 ## Specifications
