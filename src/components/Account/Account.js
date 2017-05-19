@@ -79,6 +79,7 @@ export default class Account extends React.Component{
     });
   }
 
+
   renderResult() {
     if (!this.state.searchResult) { return; }
     return this.state.searchResult.map( (item, index) =>

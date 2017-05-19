@@ -65,6 +65,42 @@ function addBook(req, res, next){
   });
 }
 
+function updateBook(req, res, next){
+  console.log('we are here');
+  const {title, author_name} = req.body;
+  const id = req.params.id;
+  db.any('UPDATE books SET title = $2, author_name = $3 WHERE id = $1', [id, title, author_name])
+  .then(function (data) {
+    console.log('data => ',data)
+    res.status(200)
+      .json({
+        status: 'success',
+        message: 'Successfully updated book'
+      });
+  })
+  .catch(function (err) {
+    console.log('err: ',err)
+    return next(err);
+  });
+}
+
+function deleteBook(req, res, next){
+  console.log('we are here');
+  const id = req.params.id;
+  db.any('DELETE from books WHERE id = $1', [id])
+  .then(function (data) {
+    console.log('data => ',data)
+    res.status(200)
+      .json({
+        status: 'success',
+        message: 'Successfully deleted book'
+      });
+  })
+  .catch(function (err) {
+    console.log('err: ',err)
+    return next(err);
+  });
+}
 
 // function addUser(req, res, next) {
 //   const username = req.params.username
@@ -90,4 +126,10 @@ function addBook(req, res, next){
 //   });
 // }
 
-module.exports = { getAllBooks: getAllBooks, getBooks: getBooks, addBook: addBook};
+module.exports = {
+  getAllBooks: getAllBooks,
+  getBooks: getBooks,
+  addBook: addBook,
+  updateBook: updateBook,
+  deleteBook: deleteBook
+};
