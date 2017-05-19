@@ -13,11 +13,11 @@ export default class Home extends React.Component{
   }
 
 
-  // <Nav />
   render(){
     console.log('Home render => ',this.props)
     return(
       <div>
+        <Nav />
           <div className="home_container">
             <div className="home_welcome">Welcome</div>
             <HomeBookList allBooks={this.props.allBooks}/>

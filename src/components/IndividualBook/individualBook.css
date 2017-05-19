@@ -2,3 +2,31 @@
   height: 220px;
   width: 160px;
 }
+
+.individualBook_container{
+  width:500px;
+  padding:10px;
+  padding-top:30px;
+  border: 1px solid grey;
+}
+
+.individualBook_description{
+  width:100%;
+  height:90px;
+  border: 0.1px solid grey;
+}
+
+.individualBook_input{
+  width:80%;
+  border: 0.1px solid grey;
+  margin-bottom: 5px;
+}
+
+.individualBook_renderBook{
+  margin-top:20px;
+  /*margin:auto;*/
+}
+
+.individualBook_btns{
+  width:95px;
+}
