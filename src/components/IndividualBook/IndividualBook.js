@@ -1,19 +1,54 @@
 import './individualBook.css'
 import React from 'react'
 import { Link }  from 'react-router-dom';
+import axios from 'axios';
 
 export default class IndividualBook extends React.Component{
   constructor(props) {
     super(props)
-    this.state = props
+    // console.log('props ===> ',props);
+    this.state = {
+      title: props.title,
+      author_name: props.author_name,
+      list_price: props.list_price,
+      publisher: props.publisher,
+      id: props.id,
+      genre: props.genre,
+      image_url: props.image_url,
+      description: props.description,
+      isbn: props.isbn
+    };
     this.saveData = this.saveData.bind(this);
+    this.updateBook = this.updateBook.bind(this);
   }
 
-  saveData(){
+  saveData(e){
+    console.log('this.state: ',this.state);
+    console.log('target ==> ', e.target.name);
+    console.log('value ==> ', e.target.value);
     let state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
   }
+
+  updateBook(){
+    console.log('this.state =====> ',this.state)
+
+    const updatedBook = this.state;
+    const {id} = this.state;
+    delete updatedBook.id
+
+    axios.put(`http://localhost:8080/api/bookstore_db/${id}/update`,
+      updatedBook
+    )
+    .then(function (response) {
+      console.log(response);
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
 
 
   renderBookSection() {
@@ -31,7 +66,7 @@ export default class IndividualBook extends React.Component{
       <div><textarea className="individualBook_description" value={description} name="description" onChange={this.saveData}/></div>
       <div>
         <button className="individualBook_edit individualBook_btns">Edit</button>
-        <button className="individualBook_save_changes individualBook_btns">Save Changes</button>
+      <button className="individualBook_save_changes individualBook_btns" onClick={this.updateBook}>Save Changes</button>
         <button className="individualBook_delete individualBook_btns">Delete</button>
       </div>
       </div>
