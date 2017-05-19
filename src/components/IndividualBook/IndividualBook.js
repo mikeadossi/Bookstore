@@ -10,7 +10,7 @@ export default class IndividualBook extends React.Component{
 
   renderBookSection() {
     const { list_price, publisher, id, genre, title, image_url, description, isbn, author_name } = this.props
-    return( <td className="individualBook_container">
+    return( <div className="individualBook_container">
       <div>
         <div><input className="individualBook_title individualBook_input" value={title}/></div>
         <div><input className="individualBook_image individualBook_input" value={image_url}/></div>
@@ -27,7 +27,7 @@ export default class IndividualBook extends React.Component{
         <button className="individualBook_delete individualBook_btns">Delete</button>
       </div>
       </div>
-    </td> )
+    </div> )
   }
 
 

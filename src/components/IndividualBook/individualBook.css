@@ -7,11 +7,15 @@
   width:500px;
   padding:10px;
   padding-top:30px;
-  border: 1px solid grey;
+  border: 1px solid tan;
+  border-radius:5px;
+  /*position: absolute;
+  left: 5%;
+  width: 85%;*/
 }
 
 .individualBook_description{
-  width:100%;
+  width:95%;
   height:90px;
   border: 0.1px solid grey;
 }

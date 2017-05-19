@@ -12,13 +12,15 @@ export default class SignUp extends React.Component{
       info: [],
       signup_username: '',
       signup_password: '',
-      signup_reenter_password: ''
+      signup_reenter_password: '',
+      signup_message_div: 'app_displayNone',
+      signup_message: ''
     }
 
-    this.signIn = SignIn.bind(this);
-    this.saveSignUpUserName = saveSignUpUserName.bind(this);
-    this.saveSignUpPassword = saveSignUpPassword.bind(this);
-    this.saveSignUpReenterPassword = saveSignUpReenterPassword.bind(this);
+    this.signIn = this.signIn.bind(this);
+    this.saveSignUpUserName = this.saveSignUpUserName.bind(this);
+    this.saveSignUpPassword = this.saveSignUpPassword.bind(this);
+    this.saveSignUpReenterPassword = this.saveSignUpReenterPassword.bind(this);
   }
 
   saveSignUpUserName(e){
@@ -46,32 +48,45 @@ export default class SignUp extends React.Component{
   }
 
   signIn() {
-    let saveSignUpReenterPassword = this.state.saveSignUpReenterPassword;
-    let saveSignUpPassword = this.state.saveSignUpPassword;
-    let saveSignUpUserName = this.saveSignUpUserName;
+    let saveSignUpReenterPassword = this.state.signup_reenter_password;
+    let saveSignUpPassword = this.state.signup_password;
+    let saveSignUpUserName = this.state.signup_username;
     let info = this.state.info;
 
     if(!saveSignUpUserName){
-      console.log('enter username');
+      this.setState({
+        signup_message: 'please enter a username',
+        signup_message_div: 'app_displayBlock'
+      })
       return;
     } else if(!saveSignUpPassword ){
-      console.log('enter password')
+      this.setState({
+        signup_message: 'please enter a password',
+        signup_message_div: 'app_displayBlock'
+      })
       return;
     } else if(!saveSignUpReenterPassword){
-      console.log('please re-enter password')
+      this.setState({
+        signup_message: 'please re-enter password',
+        signup_message_div: 'app_displayBlock'
+      })
       return;
     } else if(saveSignUpPassword !== saveSignUpReenterPassword){
-      console.log('passwords do not match');
+      this.setState({
+        signup_message: 'passwords do not match',
+        signup_message_div: 'app_displayBlock'
+      })
       return;
     }
 
     info.push(saveSignUpUserName, saveSignUpPassword);
 
     this.setState({
-      info: info
+      info: info,
+      signup_message_div: 'app_displayNone'
     })
+    console.log('this.state.info: ',this.state.info)
 
-    console.log('this.state.info ----> ',this.state.info)
     fetch( 'http://localhost:8080/api/bookstore_db?info=' + this.state.info )
       .catch((error) => {
         this.setState({
@@ -100,6 +115,9 @@ export default class SignUp extends React.Component{
               <input className="signup_reenter_password_input signup_input" placeholder="password" onChange={this.saveSignUpReenterPassword}/>
               </div>
               <button onClick={this.signIn} className="signup_submit_btn">submit</button>
+            </div>
+            <div className="signup_message_container">
+              <div className={this.state.signup_message_div}>{this.state.signup_message}</div>
             </div>
           </div>
         <Footer />
