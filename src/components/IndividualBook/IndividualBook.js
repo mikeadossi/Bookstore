@@ -5,22 +5,30 @@ import { Link }  from 'react-router-dom';
 export default class IndividualBook extends React.Component{
   constructor(props) {
     super(props)
+    this.state = props
+    this.saveData = this.saveData.bind(this);
+  }
+
+  saveData(){
+    let state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
   }
 
 
   renderBookSection() {
-    const { list_price, publisher, id, genre, title, image_url, description, isbn, author_name } = this.props
+    const { list_price, publisher, id, genre, title, image_url, description, isbn, author_name } = this.state
     return( <div className="individualBook_container">
       <div>
-        <div><input className="individualBook_title individualBook_input" value={title}/></div>
-        <div><input className="individualBook_image individualBook_input" value={image_url}/></div>
-        <div><input className="individualBook_name individualBook_input" value={author_name}/></div>
-        <div><input className="individualBook_price individualBook_input" value={list_price}/></div>
-        <div><input className="individualBook_genre individualBook_input" value={genre}/></div>
-        <div><input className="individualBook_publisher individualBook_input" value={publisher}/></div>
-        <div><input className="individualBook_isbn individualBook_input" value={isbn}/></div>
+        <div><input className="individualBook_title individualBook_input" value={title} name="title" onChange={this.saveData}/></div>
+        <div><input className="individualBook_image individualBook_input" value={image_url} name="image_url" onChange={this.saveData} /></div>
+        <div><input className="individualBook_name individualBook_input" value={author_name} name="author_name" onChange={this.saveData} /></div>
+        <div><input className="individualBook_price individualBook_input" value={list_price} name="list_price" onChange={this.saveData} /></div>
+        <div><input className="individualBook_genre individualBook_input" value={genre} name="genre" onChange={this.saveData} /></div>
+        <div><input className="individualBook_publisher individualBook_input" value={publisher} name="publisher" onChange={this.saveData} /></div>
+      <div><input className="individualBook_isbn individualBook_input" value={isbn} name="isbn" onChange={this.saveData} /></div>
         <br/>
-      <div><textarea className="individualBook_description" value={description}/></div>
+      <div><textarea className="individualBook_description" value={description} name="description" onChange={this.saveData}/></div>
       <div>
         <button className="individualBook_edit individualBook_btns">Edit</button>
         <button className="individualBook_save_changes individualBook_btns">Save Changes</button>
