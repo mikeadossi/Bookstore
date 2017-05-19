@@ -87,7 +87,6 @@ export default class SignUp extends React.Component{
       info: info,
       signup_message_div: 'app_displayNone'
     })
-    console.log('this.state.info: ',this.state.info)
 
   }
 

@@ -10,15 +10,12 @@ export default class Details extends React.Component{
     this.state = {
       bookToDisplay: []
     }
-    console.log('props obj (from Details) ====> ',props)
-    console.log('props obj (from Details) ====> ',props.match.params.id)
   }
 
   componentWillMount(){
     fetch( 'http://localhost:8080/api/bookstore_db/'+this.props.match.params.id )
       .then( result => result.json() )
       .then( json => {
-        console.log('json from Details.js: ',json)
         this.setState({ bookToDisplay: json.data })
       })
       .catch((error) => {
@@ -29,7 +26,6 @@ export default class Details extends React.Component{
   }
 
   render(){
-    console.log('bookToDisplay => ',this.state.bookToDisplay)
     const bookData = this.state.bookToDisplay;
     return(
       <div>
