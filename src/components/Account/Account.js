@@ -9,10 +9,12 @@ export default class Account extends React.Component{
     super(props);
     this.state = {
       query: null,
-      searchResult: null
+      searchResult: null,
+      account_addBook_div: 'app_displayBlock'
     }
     this.handleChange = this.handleChange.bind(this);
     this.searchDb = this.searchDb.bind(this);
+    this.addNewBook = this.addNewBook.bind(this);
   }
 
   handleChange(event) {
@@ -34,6 +36,12 @@ export default class Account extends React.Component{
       })
   }
 
+  addNewBook(){
+    // if(this.state.account_addBook_div === 'app_displayBlock') ? 
+    //   this.setState({account_addBook_div : 'app_displayNone'}) :
+    //   this.setState({account_addBook_div : 'app_displayBlock'})
+  }
+
   renderResult() {
     if (!this.state.searchResult) { return; }
     return this.state.searchResult.map( (item, index) =>
@@ -51,8 +59,20 @@ export default class Account extends React.Component{
             <div className="account_container">
               <div className="account_title">Account</div>
             <input className="account_search_input" placeholder="search database" onChange={this.handleChange}/>
-            <button onClick={this.searchDb}>submit</button>
+            <button onClick={this.searchDb}>search</button>
+            <button onClick={this.addNewBook}>add new book</button>
             {this.renderResult()}
+            <div className={this.account_addBook_div}>
+              <div className="account_addbook_divs"><div className="account_label">Book title: </div><input /></div>
+              <div className="account_addbook_divs"><div className="account_label">Image Url: </div><input /></div>
+              <div className="account_addbook_divs"><div className="account_label">Author name: </div><input /></div>
+              <div className="account_addbook_divs"><div className="account_label">Price: </div><input /></div>
+              <div className="account_addbook_divs"><div className="account_label">Genre: </div><input /></div>
+              <div className="account_addbook_divs"><div className="account_label">Publisher: </div><input /></div>
+              <div className="account_addbook_divs"><div className="account_label">Isbn: </div><input /></div>
+              <div className="account_addbook_divs"><div className="account_label">Description: </div><textarea className="account_addBook_textarea"/></div>
+              <button>Save Book</button>
+            </div>
             </div>
           </div>
         <Footer />
