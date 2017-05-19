@@ -6,7 +6,8 @@
 
 .details_container{
   text-align:center;
-  padding: 9px;
+  padding: 5%;
+  font-size:13px;
   font-family: arial;
 }
 
@@ -14,4 +15,9 @@
   margin-bottom:10px;
   color:tan;
   font-size: 28px;
+}
+
+.details_cover_img{
+  height:270px;
+  padding:50px;
 }

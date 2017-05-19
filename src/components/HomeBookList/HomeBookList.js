@@ -1,7 +1,7 @@
 import React from 'react';
 import BookPresented from 'components/BookPresented/BookPresented';
 
-export default class BooksList extends React.Component{
+export default class HomeBookList extends React.Component{
   constructor(props){
     super(props)
   }

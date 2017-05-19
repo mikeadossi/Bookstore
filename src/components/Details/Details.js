@@ -37,9 +37,14 @@ export default class Details extends React.Component{
           <div className="details_comp_container">
             <div className="details_container">
               <div className="details_title">Details</div>
-              <div>{bookData.title}</div>
+              <h3>{bookData.title}</h3>
               <div>{bookData.author_name}</div>
-              <div><img src={bookData.image_url}/></div>
+              <div><img className="details_cover_img" src={bookData.image_url}/></div>
+              <div>Price: {bookData.list_price}</div>
+              <div>Genre: {bookData.genre}</div>
+              <div>Publisher: {bookData.publisher}</div>
+              <div>ISBN: {bookData.isbn}</div>
+              <br/>
               <div>{bookData.description}</div>
             </div>
           </div>
