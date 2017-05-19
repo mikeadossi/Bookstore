@@ -48,6 +48,24 @@ function getBooks(req, res, next) {
   });
 }
 
+function addBook(req, res, next){
+  const {title, author_name} = req.body;
+  db.any('INSERT INTO books (title, author_name) VALUES ($1, $2)', [title, author_name])
+  .then(function (data) {
+    console.log('data => ',data)
+    res.status(200)
+      .json({
+        status: 'success',
+        message: 'Successfully inserted book'
+      });
+  })
+  .catch(function (err) {
+    console.log('err: ',err)
+    return next(err);
+  });
+}
+
+
 // function addUser(req, res, next) {
 //   const username = req.params.username
 //   const password = req.params.password
@@ -72,4 +90,4 @@ function getBooks(req, res, next) {
 //   });
 // }
 
-module.exports = { getAllBooks: getAllBooks, getBooks: getBooks};
+module.exports = { getAllBooks: getAllBooks, getBooks: getBooks, addBook: addBook};

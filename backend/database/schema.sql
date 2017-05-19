@@ -1,14 +1,14 @@
 DROP TABLE IF EXISTS books;
 CREATE TABLE IF NOT EXISTS books (
   id SERIAL PRIMARY KEY,
-  genre VARCHAR(12) NOT NULL,
-  title VARCHAR(256) NOT NULL,
+  genre VARCHAR(12) ,
+  title VARCHAR(256) ,
   image_url VARCHAR(512),
   description TEXT,
-  isbn VARCHAR(50) NOT NULL,
-  author_name VARCHAR(40) NOT NULL,
-  list_price VARCHAR(10) NOT NULL,
-  publisher VARCHAR(100) NOT NULL
+  isbn VARCHAR(50) ,
+  author_name VARCHAR(40) ,
+  list_price VARCHAR(10) ,
+  publisher VARCHAR(100)
 );
 
 DROP TABLE IF EXISTS authors;
