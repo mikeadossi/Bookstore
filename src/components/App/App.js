@@ -27,7 +27,6 @@ export default class App extends React.Component{
     fetch( 'http://localhost:8080/api/bookstore_db' )
       .then( result => result.json() )
       .then( json => {
-        console.log('json --------> ',json)
         this.setState({ allBooks: json.data })
       })
       .catch((error) => {
@@ -38,7 +37,6 @@ export default class App extends React.Component{
   }
 
   render(){
-    console.log('app render => ',this.state);
     const allBooks = this.state.allBooks
     const HomeBookListComponent = () => <HomeBookList allBooks={allBooks} />
 
