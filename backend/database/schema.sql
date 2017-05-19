@@ -11,30 +11,6 @@ CREATE TABLE IF NOT EXISTS books (
   publisher VARCHAR(100)
 );
 
-DROP TABLE IF EXISTS authors;
-CREATE TABLE IF NOT EXISTS authors (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(256) NOT NULL
-);
-
-DROP TABLE IF EXISTS genres;
-CREATE TABLE IF NOT EXISTS genres (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(256) NOT NULL
-);
-
-DROP TABLE IF EXISTS book_authors;
-CREATE TABLE IF NOT EXISTS book_authors (
-  book_id INTEGER,
-  author_id INTEGER
-);
-
-DROP TABLE IF EXISTS book_genres;
-CREATE TABLE IF NOT EXISTS book_genres (
-  book_id INTEGER,
-  genre_id INTEGER
-);
-
 INSERT INTO books (list_price, publisher, genre, title, image_url, description, isbn, author_name)
 VALUES ('$16.99','Back Bay Books; Reprint edition (June 7, 2011)','non-fiction','Outliers','https://images-na.ssl-images-amazon.com/images/I/41h5QL0vVEL._SX327_BO1,204,203,200_.jpg','In this stunning new book, Malcolm Gladwell takes us on an intellectual journey through the world of "outliers"--the best and the brightest, the most famous and the most successful. He asks the question: what makes high-achievers different?
 His answer is that we pay too much attention to what successful people are like, and too little attention to where they are from: that is, their culture, their family, their generation, and the idiosyncratic experiences of their upbringing. Along the way he explains the secrets of software billionaires, what it takes to be a great soccer player, why Asians are good at math, and what made the Beatles the greatest rock band.
