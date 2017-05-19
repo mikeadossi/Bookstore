@@ -11,6 +11,7 @@ import Account from 'components/Account/Account';
 import Details from 'components/Details/Details';
 import About from 'components/About/About';
 import BooksList from 'components/BooksList/BooksList';
+import HomeBookList from 'components/HomeBookList/HomeBookList';
 import { Link, Route, BrowserRouter, Switch } from 'react-router-dom';
 
 export default class App extends React.Component{
@@ -26,7 +27,7 @@ export default class App extends React.Component{
     fetch( 'http://localhost:8080/api/bookstore_db' )
       .then( result => result.json() )
       .then( json => {
-        console.log(json)
+        console.log('json --------> ',json)
         this.setState({ allBooks: json.data })
       })
       .catch((error) => {
@@ -39,7 +40,7 @@ export default class App extends React.Component{
   render(){
     console.log('app render => ',this.state);
     const allBooks = this.state.allBooks
-    const BooksListComponent = () => <BooksList allBooks={allBooks} />
+    const HomeBookListComponent = () => <HomeBookList allBooks={allBooks} />
 
 
     return(
@@ -55,7 +56,7 @@ export default class App extends React.Component{
             <Route exact path="/details" component={ Details } />
             <Route exact path="/about" component={ About } />
             <Route path="/details/:id" component={ Details } />
-            <Route path="/bookList" component={ BooksListComponent }/>
+            <Route path="/bookList" component={ HomeBookListComponent }/>
           </Switch>
         </BrowserRouter>
       </div>

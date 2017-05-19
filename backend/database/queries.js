@@ -4,14 +4,14 @@ const options = {
   promiseLib: promise
 };
 
-const pgp = require('pg-promise')(options);
-const connectionString = `postgres://${process.env.USER}@localhost:5432/bookstore_db`;
-const db = pgp(connectionString);
+let pgp = require('pg-promise')(options);
+let connectionString = `postgres://${process.env.USER}@localhost:5432/bookstore_db`;
+let db = pgp(connectionString);
 
 
 function getAllBooks(req, res, next) {
-  const result = req.query.query;
-  const query = req.query.query;
+  let result,
+        query = req.query.query;
 
   if (query) {
     result = db.any("SELECT * FROM books WHERE title = $1 OR genre = $1 OR isbn = $1 OR author_name = $1", [query])
@@ -48,28 +48,28 @@ function getBooks(req, res, next) {
   });
 }
 
-function addUser(req, res, next) {
-  const username = req.params.username
-  const password = req.params.password
+// function addUser(req, res, next) {
+//   const username = req.params.username
+//   const password = req.params.password
+//
+//   if (username, password){
+//     result = db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password]);
+//   } else {
+//     console.log('username or password not given');
+//     return;
+//   }
+//
+//   result.then(function (data) {
+//     res.status(200)
+//       .json({
+//         status: 'success',
+//         data: data,
+//         message: 'added user'
+//       });
+//   })
+//   .catch(function (err) {
+//     return next(err);
+//   });
+// }
 
-  if (username, password){
-    result = db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password]);
-  } else {
-    console.log('username or password not given');
-    return;
-  }
-
-  result.then(function (data) {
-    res.status(200)
-      .json({
-        status: 'success',
-        data: data,
-        message: 'added user'
-      });
-  })
-  .catch(function (err) {
-    return next(err);
-  });
-}
-
-module.exports = { getAllBooks: getAllBooks, getBooks: getBooks, addUser: addUser };
+module.exports = { getAllBooks: getAllBooks, getBooks: getBooks};

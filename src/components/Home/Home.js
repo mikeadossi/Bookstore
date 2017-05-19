@@ -3,6 +3,7 @@ import React from 'react';
 import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import HomeBookList from 'components/HomeBookList/HomeBookList';
+import BooksList from 'components/BooksList/BooksList';
 
 export default class Home extends React.Component{
 

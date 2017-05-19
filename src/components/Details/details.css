@@ -1,12 +1,12 @@
 .details_comp_container{
   padding-top: 20vh;
-  padding-bottom: 40vh;
   text-align:center;
 }
 
 .details_container{
   text-align:center;
-  padding: 9px;
+  padding: 5%;
+  font-size:13px;
   font-family: arial;
 }
 
@@ -14,4 +14,47 @@
   margin-bottom:10px;
   color:tan;
   font-size: 28px;
+}
+
+.details_cover_img{
+  height:270px;
+  padding:50px;
+}
+
+.details_comment_container, .details_review_container{
+  text-align: center;
+  width: 80%;
+  margin: auto;
+  padding-bottom:60px;
+}
+
+.details_headers{
+  font-family:arial;
+}
+
+.details_comment_box{
+  width:70%;
+  height:70px;
+}
+
+.details_submit_btn{
+  display:block;
+  margin:auto;
+}
+
+.details_review{
+  background-color:gainsboro;
+  border-radius:5px;
+  font-size:12px;
+  padding:10px;
+}
+
+.details_review_username{
+  background-color:white;
+  margin-right: 10px;
+  padding: 8px;
+}
+
+.details_review_username, .details_review_comment{
+  display:inline-block;
 }

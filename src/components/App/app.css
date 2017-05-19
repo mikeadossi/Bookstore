@@ -31,3 +31,11 @@ input:focus, button:focus{
 a{
   text-decoration:none;
 }
+
+.app_displayBlock{
+  display:block;
+}
+
+.app_displayNone{
+  display:none;
+}

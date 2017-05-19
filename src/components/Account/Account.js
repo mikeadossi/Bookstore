@@ -52,7 +52,7 @@ export default class Account extends React.Component{
               <div className="account_title">Account</div>
             <input className="account_search_input" placeholder="search database" onChange={this.handleChange}/>
             <button onClick={this.searchDb}>submit</button>
-          {this.renderResult()}
+            {this.renderResult()}
             </div>
           </div>
         <Footer />

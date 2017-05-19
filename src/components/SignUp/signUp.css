@@ -38,3 +38,8 @@
   text-align:right;
   margin-right:5px;
 }
+
+.signup_message_container{
+  text-align:center;
+  color:indianred;
+}
