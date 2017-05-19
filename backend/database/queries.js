@@ -52,7 +52,6 @@ function addBook(req, res, next){
   const {title, author_name} = req.body;
   db.any('INSERT INTO books (title, author_name) VALUES ($1, $2)', [title, author_name])
   .then(function (data) {
-    console.log('data => ',data)
     res.status(200)
       .json({
         status: 'success',
@@ -60,18 +59,15 @@ function addBook(req, res, next){
       });
   })
   .catch(function (err) {
-    console.log('err: ',err)
     return next(err);
   });
 }
 
 function updateBook(req, res, next){
-  console.log('we are here');
   const {title, author_name} = req.body;
   const id = req.params.id;
   db.any('UPDATE books SET title = $2, author_name = $3 WHERE id = $1', [id, title, author_name])
   .then(function (data) {
-    console.log('data => ',data)
     res.status(200)
       .json({
         status: 'success',
@@ -79,17 +75,14 @@ function updateBook(req, res, next){
       });
   })
   .catch(function (err) {
-    console.log('err: ',err)
     return next(err);
   });
 }
 
 function deleteBook(req, res, next){
-  console.log('we are here');
   const id = req.params.id;
   db.any('DELETE from books WHERE id = $1', [id])
   .then(function (data) {
-    console.log('data => ',data)
     res.status(200)
       .json({
         status: 'success',
@@ -97,34 +90,9 @@ function deleteBook(req, res, next){
       });
   })
   .catch(function (err) {
-    console.log('err: ',err)
     return next(err);
   });
 }
-
-// function addUser(req, res, next) {
-//   const username = req.params.username
-//   const password = req.params.password
-//
-//   if (username, password){
-//     result = db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password]);
-//   } else {
-//     console.log('username or password not given');
-//     return;
-//   }
-//
-//   result.then(function (data) {
-//     res.status(200)
-//       .json({
-//         status: 'success',
-//         data: data,
-//         message: 'added user'
-//       });
-//   })
-//   .catch(function (err) {
-//     return next(err);
-//   });
-// }
 
 module.exports = {
   getAllBooks: getAllBooks,

@@ -6,7 +6,6 @@ import axios from 'axios';
 export default class IndividualBook extends React.Component{
   constructor(props) {
     super(props)
-    // console.log('props ===> ',props);
     this.state = {
       title: props.title,
       author_name: props.author_name,
@@ -24,17 +23,12 @@ export default class IndividualBook extends React.Component{
   }
 
   saveData(e){
-    console.log('this.state: ',this.state);
-    console.log('target ==> ', e.target.name);
-    console.log('value ==> ', e.target.value);
     let state = this.state;
     state[e.target.name] = e.target.value;
     this.setState(state);
   }
 
   updateBook(){
-    console.log('this.state =====> ',this.state)
-
     const updatedBook = this.state;
     const {id} = this.state;
     delete updatedBook.id
@@ -51,7 +45,6 @@ export default class IndividualBook extends React.Component{
   }
 
   deleteBook(){
-    console.log('deleting!!!');
     const {id} = this.state;
 
     axios.delete(`http://localhost:8080/api/bookstore_db/${id}`)

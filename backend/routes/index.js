@@ -13,8 +13,4 @@ router.put('/api/bookstore_db/:id/update', db.updateBook);
 
 router.delete('/api/bookstore_db/:id', db.deleteBook);
 
-// router.post('api/bookstore_db/:username/:password', db.addUser);
-
-// router.post('api/bookstore_db', db.logIntoAccount);
-
 module.exports = router;
