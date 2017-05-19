@@ -84,6 +84,23 @@ function updateBook(req, res, next){
   });
 }
 
+function deleteBook(req, res, next){
+  console.log('we are here');
+  const id = req.params.id;
+  db.any('DELETE from books WHERE id = $1', [id])
+  .then(function (data) {
+    console.log('data => ',data)
+    res.status(200)
+      .json({
+        status: 'success',
+        message: 'Successfully deleted book'
+      });
+  })
+  .catch(function (err) {
+    console.log('err: ',err)
+    return next(err);
+  });
+}
 
 // function addUser(req, res, next) {
 //   const username = req.params.username
@@ -113,5 +130,6 @@ module.exports = {
   getAllBooks: getAllBooks,
   getBooks: getBooks,
   addBook: addBook,
-  updateBook: updateBook
+  updateBook: updateBook,
+  deleteBook: deleteBook
 };

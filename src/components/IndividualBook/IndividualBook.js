@@ -20,6 +20,7 @@ export default class IndividualBook extends React.Component{
     };
     this.saveData = this.saveData.bind(this);
     this.updateBook = this.updateBook.bind(this);
+    this.deleteBook = this.deleteBook.bind(this);
   }
 
   saveData(e){
@@ -49,6 +50,20 @@ export default class IndividualBook extends React.Component{
     });
   }
 
+  deleteBook(){
+    console.log('deleting!!!');
+    const {id} = this.state;
+
+    axios.delete(`http://localhost:8080/api/bookstore_db/${id}`)
+    .then(function (response) {
+      console.log('deleted ',response);
+    })
+    .then( location.reload() )
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
 
 
   renderBookSection() {
@@ -67,7 +82,7 @@ export default class IndividualBook extends React.Component{
       <div>
         <button className="individualBook_edit individualBook_btns">Edit</button>
       <button className="individualBook_save_changes individualBook_btns" onClick={this.updateBook}>Save Changes</button>
-        <button className="individualBook_delete individualBook_btns">Delete</button>
+    <button className="individualBook_delete individualBook_btns" onClick={() => {if(confirm('Delete the item?')) {this.deleteBook()};}}>Delete</button>
       </div>
       </div>
     </div> )
