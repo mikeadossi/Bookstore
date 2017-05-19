@@ -4,15 +4,6 @@ import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import Link from 'react-router-dom';
 
-// const serialize = obj => {
-// let str = [];
-// for(let p in obj)
-//   if (obj.hasOwnProperty(p)) {
-//     str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]))
-//   }
-// return str.join("&")
-// }
-
 export default class SignUp extends React.Component{
 
   constructor(props){
@@ -98,15 +89,6 @@ export default class SignUp extends React.Component{
     })
     console.log('this.state.info: ',this.state.info)
 
-    // fetch( 'http://localhost:8080/api/bookstore_db, {
-    //   method: 'POST',
-    //   body:
-    // }' )
-    //   .catch((error) => {
-    //     this.setState({
-    //       error: error
-    //     })
-    //   })
   }
 
   render(){

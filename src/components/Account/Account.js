@@ -30,11 +30,9 @@ export default class Account extends React.Component{
   }
 
   searchDb() {
-  //  console.log(this.state.query)
     fetch( 'http://localhost:8080/api/bookstore_db?query=' + this.state.query )
       .then( result => result.json() )
       .then( json => {
-        // console.log('json from Details.js: ',json)
         this.setState({ searchResult: json.data })
       })
       .catch((error) => {
@@ -59,14 +57,12 @@ export default class Account extends React.Component{
   }
 
   addNewBook(){
-    console.log('this.state =====> ',this.state)
 
     axios.post('http://localhost:8080/api/bookstore_db', {
       title : this.state.account_add_title,
       author_name : this.state.account_author_name
     })
     .then(function (response) {
-      console.log(response);
       this.setState({
         account_add_title: '',
         account_add_author_name: '',
@@ -76,7 +72,7 @@ export default class Account extends React.Component{
       })
     })
     .catch(function (error) {
-      console.log(error);
+
     });
   }
 
@@ -90,7 +86,6 @@ export default class Account extends React.Component{
   }
 
   render(){
-    // console.log('this.state ==> ',this.state)
     return(
       <div>
         <Nav />
