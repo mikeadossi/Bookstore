@@ -50,22 +50,22 @@ See the app running on http://localhost:8080
 - [ ] Test suite can be run with the command npm test.
 - [x] All features are added as pull requests.
 - [x] Variables, functions, files, etc. have appropriate and meaningful names.
-- [ ] Functions are small and serve a single purpose.
-- [ ] Code uses a linter and there are no linting errors.
+- [x] Functions are small and serve a single purpose.
+- [x] Code uses a linter and there are no linting errors.
 - [ ] Code is well tested and all tests are passing.
 - [x] The artifact produced is properly licensed, preferably with the MIT license.
 
 ### Stories
 
 - [x] Books have a title, author, and genre.
-- [ ] Users can add books into the bookstore system via an admin page (create).
+- [x] Users can add books into the bookstore system via an admin page (create).
 - [x] Users can see a list of books on the home page (read).
-- [ ] Users can edit a book’s title, author, or genre (update).
-- [ ] Users can delete a book from the bookstore (delete).
+- [x] Users can edit a book’s title, author, or genre (update).
+- [x] Users can delete a book from the bookstore (delete).
 - [x] Users can search for books by title OR by author OR by genre (read).
 - [x] Users can view book details on a book detail page (read).
 - [ ] Lists of books are always paginated in groups of 10.
-- [ ] Book detail view is linked to and from the listing and search pages.
+- [x] Book detail view is linked to and from the listing and search pages.
 - [ ] Search results are presented in a new page.
 
 ### Stretch

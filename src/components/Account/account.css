@@ -15,3 +15,43 @@
   color:tan;
   font-size: 28px;
 }
+
+.account_addBook_textarea{
+  width:100%;
+  max-width: 500px;
+  height:200px;
+}
+
+.account_label{
+  width:105px;
+  display:inline-block;
+}
+
+.account_textarea_label{
+  width:105px;
+  display:block;
+}
+
+.account_addbook_divs{
+  text-align:left;
+  width: 235px;
+}
+
+.account_addbook_textarea{
+  text-align:left;
+  width: 90%;
+}
+
+#account_addBook_container{
+  border: 1px solid tan;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 60px;
+}
+
+@media (max-width:400px) {
+  .account_addbook_textarea{
+    display:block;
+    width:90%;
+  }
+}

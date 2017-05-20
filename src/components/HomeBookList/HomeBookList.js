@@ -8,8 +8,6 @@ export default class HomeBookList extends React.Component{
 
   renderItems() {
 
-    // const { toggleTask, deleteTask, saveTask } = this.props
-    console.log('allBooks: ',this.props)
     return this.props.allBooks.map( (book, index) =>
       <BookPresented
         {...book}

@@ -1,38 +1,14 @@
 DROP TABLE IF EXISTS books;
 CREATE TABLE IF NOT EXISTS books (
   id SERIAL PRIMARY KEY,
-  genre VARCHAR(12) NOT NULL,
-  title VARCHAR(256) NOT NULL,
+  genre VARCHAR(12) ,
+  title VARCHAR(256) ,
   image_url VARCHAR(512),
   description TEXT,
-  isbn VARCHAR(50) NOT NULL,
-  author_name VARCHAR(40) NOT NULL,
-  list_price VARCHAR(10) NOT NULL,
-  publisher VARCHAR(100) NOT NULL
-);
-
-DROP TABLE IF EXISTS authors;
-CREATE TABLE IF NOT EXISTS authors (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(256) NOT NULL
-);
-
-DROP TABLE IF EXISTS genres;
-CREATE TABLE IF NOT EXISTS genres (
-  id SERIAL PRIMARY KEY,
-  name VARCHAR(256) NOT NULL
-);
-
-DROP TABLE IF EXISTS book_authors;
-CREATE TABLE IF NOT EXISTS book_authors (
-  book_id INTEGER,
-  author_id INTEGER
-);
-
-DROP TABLE IF EXISTS book_genres;
-CREATE TABLE IF NOT EXISTS book_genres (
-  book_id INTEGER,
-  genre_id INTEGER
+  isbn VARCHAR(50) ,
+  author_name VARCHAR(40) ,
+  list_price VARCHAR(10) ,
+  publisher VARCHAR(100)
 );
 
 INSERT INTO books (list_price, publisher, genre, title, image_url, description, isbn, author_name)

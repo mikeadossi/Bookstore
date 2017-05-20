@@ -9,7 +9,7 @@ export default class SignUp extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      info: [],
+      info: {},
       signup_username: '',
       signup_password: '',
       signup_reenter_password: '',
@@ -22,6 +22,7 @@ export default class SignUp extends React.Component{
     this.saveSignUpPassword = this.saveSignUpPassword.bind(this);
     this.saveSignUpReenterPassword = this.saveSignUpReenterPassword.bind(this);
   }
+
 
   saveSignUpUserName(e){
     e.preventDefault()
@@ -46,6 +47,7 @@ export default class SignUp extends React.Component{
       signup_reenter_password : targetValue
     })
   }
+
 
   signIn() {
     let saveSignUpReenterPassword = this.state.signup_reenter_password;
@@ -79,20 +81,13 @@ export default class SignUp extends React.Component{
       return;
     }
 
-    info.push(saveSignUpUserName, saveSignUpPassword);
+    info = { username: saveSignUpUserName, password: saveSignUpReenterPassword}
 
     this.setState({
       info: info,
       signup_message_div: 'app_displayNone'
     })
-    console.log('this.state.info: ',this.state.info)
 
-    fetch( 'http://localhost:8080/api/bookstore_db?info=' + this.state.info )
-      .catch((error) => {
-        this.setState({
-          error: error
-        })
-      })
   }
 
   render(){

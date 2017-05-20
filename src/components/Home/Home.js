@@ -9,12 +9,10 @@ export default class Home extends React.Component{
 
   constructor(props){
     super(props)
-    console.log('props obj: ',props)
   }
 
 
   render(){
-    console.log('Home render => ',this.props)
     return(
       <div>
         <Nav />
