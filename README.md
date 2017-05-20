@@ -1,8 +1,8 @@
 # Bookstore
 A bookstore app built with PostgreSQL, Express and React.
 
-<br/>
-<br/>
+<img src="src/images/screenshot.png" height="400px"/>
+
 
 ## Install and Run App
 
@@ -20,9 +20,9 @@ To run the frontend, do the following in the projects main root directory:
   $ webpack
   $ webpack -w
 ```
-### Run backend 
+### Run backend
 
-You will also need to run the backend server. 
+You will also need to run the backend server.
 To get the backend setup correctly run the following commands once inside the backend folder:
 
 ```
