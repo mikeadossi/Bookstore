@@ -22,12 +22,12 @@
 .individualBook_description{
   width:95%;
   height:90px;
-  border: 0.1px solid grey;
+  border: 0.1px solid gainsboro;
 }
 
 .individualBook_input{
   width:80%;
-  border: 0.1px solid grey;
+  border: 0.1px solid gainsboro;
   margin-bottom: 5px;
 }
 
