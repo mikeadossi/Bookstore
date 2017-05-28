@@ -9,9 +9,14 @@
   padding-top:30px;
   border: 1px solid tan;
   border-radius:5px;
+  margin:auto;
   /*position: absolute;
   left: 5%;
   width: 85%;*/
+}
+
+.individualBook_renderBook{
+  margin:auto;
 }
 
 .individualBook_description{

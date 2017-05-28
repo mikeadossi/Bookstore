@@ -91,7 +91,7 @@ export default class Account extends React.Component{
         <Nav />
           <div className="account_comp_container">
             <div className="account_container">
-              <div className="account_title">Account</div>
+              <div className="account_title">Accounts</div>
             <input className="account_search_input" placeholder="search database" onChange={this.handleChange}/>
             <button onClick={this.searchDb}>search</button>
             <button onClick={this.toggleAddBook}>add new book</button>
