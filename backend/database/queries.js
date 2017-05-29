@@ -94,10 +94,40 @@ function deleteBook(req, res, next){
   });
 }
 
+function getUser(req, res){
+  const name = req.params.name;
+  db.any('SELECT * FROM users WHERE username = $1', [name])
+  .then(function (data) {
+    res.status(200)
+      .json({
+        status: 'success'
+      });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+}
+
+function logIn(req, res){
+  const username = req.params.username;
+  const password = req.params.password;
+  db.any('SELECT * FROM users WHERE username = $1 password = $2', [username, password])
+  .then(function (data) {
+    res.status(200)
+      .json({
+        status: 'success'
+      });
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+}
+
 module.exports = {
   getAllBooks: getAllBooks,
   getBooks: getBooks,
   addBook: addBook,
   updateBook: updateBook,
-  deleteBook: deleteBook
+  deleteBook: deleteBook,
+  getUser: getUser
 };

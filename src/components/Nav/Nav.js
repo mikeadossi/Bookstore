@@ -10,9 +10,16 @@ export default class Nav extends React.Component{
       menu_styling : 'nav_top_hamburger fa fa-bars fa-lg',
       menu_wide_styling : 'nav_hamburger fa fa-bars fa-lg',
       menu_open : 'nav_link_bottom display_none',
+      nav_logIn_inauthenticated : 'display_block',
+      nav_logIn_authenticated : 'display_none'
     }
 
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.checkIfAuthenticated = this.checkIfAuthenticated.bind(this);
+  }
+
+  componentDidMount(){
+    //checkIfAuthenticated();
   }
 
   toggleMenu(){
@@ -37,6 +44,16 @@ export default class Nav extends React.Component{
     }
   }
 
+  checkIfAuthenticated(){
+    let displayA;
+    let displayB;
+    //!isAuthenticated ? displayA = "display_block" && displayB = "display_none" : displayA = "display_none" && displayB = "display_block";
+    this.setState({
+      nav_logIn_inauthenticated : displayA,
+      nav_logIn_authenticated : displayB
+    })
+  }
+
   render(){
     return(
       <div className="nav_container">
@@ -49,8 +66,13 @@ export default class Nav extends React.Component{
           </div>
           <div className={this.state.menu_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
           <div className="nav_wide_links_container">
-            <Link to="/logIn" className="nav_wide_links nav_wide_logIn">log in</Link>
-            <Link to="/signUp" className="nav_wide_links">sign up</Link>
+            <div className={this.state.nav_logIn_inauthenticated}>
+              <Link to="/logIn" className="nav_wide_links nav_wide_logIn">log in</Link>
+              <Link to="/signUp" className="nav_wide_links">sign up</Link>
+            </div>
+            <div className={this.state.nav_logIn_authenticated}>
+              <Link to="/signUp" className="nav_wide_links">log out</Link>
+            </div>
             <Link to="/about" className="nav_wide_links">about</Link>
             <Link to="/account" className="nav_wide_links">account</Link>
           </div>

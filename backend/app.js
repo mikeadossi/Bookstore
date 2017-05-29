@@ -1,26 +1,29 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var morgan = require('morgan');
-var app = express();
-var session = require('express-session');
-var passport = require('passport');
-var cors = require('cors');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const morgan = require('morgan');
+const app = express();
+const session = require('express-session');
+const passport = require('passport');
+const cors = require('cors');
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-var index = require('./routes/index');
-// var users = require('./routes/users')
-// var addBook = require('./routes/addBook');
-// var redirect = require('./routes/redirect');
+const index = require('./routes/index');
+// const users = require('./routes/users')
+// const addBook = require('./routes/addBook');
+// const redirect = require('./routes/redirect');
 
 app.options('*', cors());
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(session({secret: "something there"}));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -43,12 +46,12 @@ app.use('/', index);
 // app.use('/users', users);
 // app.use('*', redirect);
 
-app.get('*', ( request, response, next) => { // handle all routes with '*'
-  response.sendFile(__dirname+'/public/index.html')
+app.get('*', (req, res, next) => { // handle all routes with '*'
+  res.sendFile(__dirname+'/public/index.html')
 })
 
 app.use(function(req, res, next) {
-  var err = new Error('Not Found');
+  const err = new Error('Not Found');
   err.status = 404;
   next(err);
 });
@@ -73,7 +76,7 @@ app.use(function(err, req, res, next) {
 
 
 
-console.log("Listening on port 8080..")
-app.listen(8080)
+console.log("Listening on port 8888..")
+app.listen(8888)
 
 // module.exports = app;

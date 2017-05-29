@@ -1,4 +1,6 @@
 DROP TABLE IF EXISTS books;
+DROP TABLE IF EXISTS users;
+
 CREATE TABLE IF NOT EXISTS books (
   id SERIAL PRIMARY KEY,
   genre VARCHAR(12) ,
@@ -9,6 +11,12 @@ CREATE TABLE IF NOT EXISTS books (
   author_name VARCHAR(40) ,
   list_price VARCHAR(10) ,
   publisher VARCHAR(100)
+);
+
+CREATE TABLE IF NOT EXISTS users (
+  id SERIAL PRIMARY KEY ,
+  username VARCHAR(20) ,
+  password VARCHAR(20)
 );
 
 INSERT INTO books (list_price, publisher, genre, title, image_url, description, isbn, author_name)

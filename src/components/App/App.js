@@ -24,7 +24,7 @@ export default class App extends React.Component{
   }
 
   componentDidMount(){
-    fetch( 'http://localhost:8080/api/bookstore_db' )
+    fetch( 'http://localhost:8888/api/bookstore_db' )
       .then( result => result.json() )
       .then( json => {
         this.setState({ allBooks: json.data })
