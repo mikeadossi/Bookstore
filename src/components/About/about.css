@@ -15,3 +15,30 @@
   color:tan;
   font-size: 28px;
 }
+
+.about_bookstore_image{
+  height:200px;
+  max-width: 360px;
+  width: 94%;
+}
+
+.about_content{
+  padding:5%;
+}
+
+.about_bookstore_img_container{
+  float:left;
+  padding:5px;
+}
+
+.about_bookstore_annotation{
+  font-size:10px;
+  background-color:gainsboro;
+  padding:10px;
+  margin-top:-4px;
+  width: 88.5%;
+  margin: auto;
+  margin-top: -4px;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
+}
