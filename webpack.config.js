@@ -28,7 +28,7 @@ module.exports = {
       ]
     },
     plugins: [ // add plugins independent of webpack
-        // new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()
     ]
 };

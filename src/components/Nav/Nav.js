@@ -10,7 +10,7 @@ export default class Nav extends React.Component{
       menu_styling : 'nav_top_hamburger fa fa-bars fa-lg',
       menu_wide_styling : 'nav_hamburger fa fa-bars fa-lg',
       menu_open : 'nav_link_bottom display_none',
-      nav_logIn_inauthenticated : 'display_block',
+      nav_logIn_inauthenticated : 'display_inline_block',
       nav_logIn_authenticated : 'display_none'
     }
 
@@ -66,7 +66,7 @@ export default class Nav extends React.Component{
           </div>
           <div className={this.state.menu_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
           <div className="nav_wide_links_container">
-            <div className={this.state.nav_logIn_inauthenticated}>
+            <div id="nav_inauthetnicated_links" className={this.state.nav_logIn_inauthenticated}>
               <Link to="/logIn" className="nav_wide_links nav_wide_logIn">log in</Link>
               <Link to="/signUp" className="nav_wide_links">sign up</Link>
             </div>
@@ -74,7 +74,9 @@ export default class Nav extends React.Component{
               <Link to="/signUp" className="nav_wide_links">log out</Link>
             </div>
             <Link to="/about" className="nav_wide_links">about</Link>
-            <Link to="/account" className="nav_wide_links">account</Link>
+            <div className={this.state.nav_logIn_inauthenticated}>
+              <Link to="/account" className="nav_wide_links">account</Link>
+            </div>
           </div>
         </div>
         <div className="nav_links_container">

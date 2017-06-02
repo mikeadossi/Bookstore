@@ -4,7 +4,7 @@
   padding:10px;
   position:fixed;
   z-index:2;
-  width:97.8%;
+  width:100%;
   box-shadow:0 4px 6px -6px #222;
   font-family:arial;
 }
@@ -72,10 +72,23 @@
 
 .display_block{
   display:block;
+  /*display:inline-block;*/
+}
+
+.display_inline_block{
+  display:inline-block;
 }
 
 .display_none{
   display:none;
+}
+
+#nav_logIn, #nav_logIn{
+  display:inline-block;
+}
+
+#nav_inauthetnicated_links{
+  display:inline-block;
 }
 
 

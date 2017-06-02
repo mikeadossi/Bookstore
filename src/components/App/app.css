@@ -34,6 +34,7 @@ a{
 
 .app_displayBlock{
   display:block;
+  display:inline-block;
 }
 
 .app_displayNone{
