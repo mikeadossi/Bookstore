@@ -18,7 +18,7 @@ To run the frontend, do the following in the projects main root directory:
 
 ```
   $ webpack
-  $ webpack -w
+  $ webpack-dev-server
 ```
 ### Run backend
 
