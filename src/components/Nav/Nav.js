@@ -11,11 +11,15 @@ export default class Nav extends React.Component{
       menu_wide_styling : 'nav_hamburger fa fa-bars fa-lg',
       menu_open : 'nav_link_bottom display_none',
       nav_logIn_inauthenticated : 'display_inline_block',
-      nav_logIn_authenticated : 'display_none'
+      nav_logIn_authenticated : 'display_none',
+      search_icon : 'nav_search_icon fa fa-search fa-lg display_block',
+      search_bar_toggle : 'nav_top_search_toggle display_none'
     }
 
     this.toggleMenu = this.toggleMenu.bind(this);
+    this.toggleSearch = this.toggleSearch.bind(this);
     this.checkIfAuthenticated = this.checkIfAuthenticated.bind(this);
+    this.closeSearch = this.closeSearch.bind(this);
   }
 
   componentDidMount(){
@@ -23,7 +27,6 @@ export default class Nav extends React.Component{
   }
 
   toggleMenu(){
-    console.log('click!')
     let menu = this.state.menu_styling;
     let menu_wide = this.state.menu_wide_styling;
 
@@ -44,6 +47,29 @@ export default class Nav extends React.Component{
     }
   }
 
+  toggleSearch(){
+    // set display_block to fixed top search.
+    console.log('searched')
+    if(this.state.search_icon === 'nav_search_icon fa fa-search fa-lg display_block'){
+      this.setState({
+        search_icon : 'nav_search_icon fa fa-search fa-lg visibility-hidden',
+        search_bar_toggle : 'nav_top_search_toggle display_block'
+      })
+    } else {
+      this.setState({
+        search_icon : 'nav_search_icon fa fa-search fa-lg display_block',
+        search_bar_toggle : 'nav_top_search_toggle display_none'
+      })
+    }
+  }
+
+  closeSearch(){
+    this.setState({
+      search_bar_toggle : 'nav_top_search_toggle display_none',
+      search_icon : 'nav_search_icon fa fa-search fa-lg display_block'
+    })
+  }
+
   checkIfAuthenticated(){
     let displayA;
     let displayB;
@@ -59,9 +85,15 @@ export default class Nav extends React.Component{
       <div className="nav_container">
         <div className="nav_top_container">
           <Link to="/" className="nav_title">Bookstore</Link>
+          <div className={this.state.search_icon} aria-hidden="true" onClick={this.toggleSearch}></div>
           <div className={this.state.menu_wide_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
           <div className="nav_top_search">
             <input className="nav_input" placeholder="search" />
+            <button className="nav_search_btn">submit</button>
+          </div>
+          <div className={this.state.search_bar_toggle}>
+            <button className="nav_close_search_toggle fa fa-close fa-lg" onClick={this.closeSearch}></button>
+            <input className="nav_input nav_input_toggle" placeholder="search" />
             <button className="nav_search_btn">submit</button>
           </div>
           <div className={this.state.menu_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
