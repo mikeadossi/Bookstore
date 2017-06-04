@@ -1,4 +1,5 @@
 const promise = require('bluebird');
+const bcrypt = require('bcrypt');
 
 const options = {
   promiseLib: promise
@@ -110,14 +111,25 @@ function getUser(req, res){
 
 function logIn(req, res, next){
   const {username, password} = req.body;
-  console.log(username,password,'<========');
-  db.any('SELECT * FROM users WHERE username = $1 AND password = $2', [username, password])
+  // console.log(username,password,'<========');
+  db.any('SELECT * FROM users WHERE username = $1', [username])
   .then(function (data) {
     console.log(data,'<-data');
     if(data.length === 1){
-      res.status(200)
-      .json({
-        status: 'success'
+      bcrypt.compare(password, data[0].password).then(function(matched) {
+          // res == true
+          console.log('res: ',res);
+        if(matched){
+          res.status(200)
+          .json({
+            status: 'successful log in'
+          });
+        } else {
+          res.status(401)
+          .json({
+            status: 'not matching'
+          });
+        }
       });
     } else {
       res.status(401)
@@ -133,17 +145,21 @@ function logIn(req, res, next){
 
 function signUp(req, res, next){
   const {username, password} = req.body;
-  db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password])
-  .then(function (data) {
-    res.status(200)
+  bcrypt.hash(password, 10, function(err, password) {
+    console.log(password,'<-- password');
+    // Store hash in your password DB.
+    db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password])
+    .then(function (data) {
+      res.status(200)
       .json({
         status: 'success',
         message: 'Successfully created user profile'
       });
+    })
+    .catch(function (err) {
+      return next(err);
+    });
   })
-  .catch(function (err) {
-    return next(err);
-  });
 }
 
 
@@ -155,5 +171,6 @@ module.exports = {
   deleteBook: deleteBook,
   getUser: getUser,
   signUp: signUp,
-  logIn: logIn
+  logIn: logIn,
+  db: db
 };

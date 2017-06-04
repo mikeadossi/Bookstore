@@ -16,7 +16,7 @@ CREATE TABLE IF NOT EXISTS books (
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY ,
   username VARCHAR(20) ,
-  password VARCHAR(20)
+  password VARCHAR(256)
 );
 
 INSERT INTO books (list_price, publisher, genre, title, image_url, description, isbn, author_name)
