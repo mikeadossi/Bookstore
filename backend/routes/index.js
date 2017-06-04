@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 const db = require('../database/queries');
 // 1: create user controller (login/register)
@@ -18,8 +19,17 @@ router.post('/api/bookstore_db/user/', db.getUser);
 
 router.post('/api/signUp', db.signUp);
 
-router.post('/api/logIn', db.logIn);
+// router.post('/api/logIn', db.logIn);
 
 //router.post('/api/login', db.getUser);
+
+router.post('/api/logIn',
+  passport.authenticate('local', {
+    successRedirect: 'http://localhost:8080',
+    failureRedirect: 'http://localhost:8080/logIn'
+    // failureFlash: true
+  })
+);
+
 
 module.exports = router;
