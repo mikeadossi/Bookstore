@@ -13,9 +13,10 @@ export default class Details extends React.Component{
   }
 
   componentWillMount(){
-    fetch( 'http://localhost:8080/api/bookstore_db/'+this.props.match.params.id )
+    fetch( 'http://localhost:8888/api/bookstore_db/'+this.props.match.params.id )
       .then( result => result.json() )
       .then( json => {
+        console.log(json,'<-- json')
         this.setState({ bookToDisplay: json.data })
       })
       .catch((error) => {

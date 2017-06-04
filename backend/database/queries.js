@@ -16,7 +16,7 @@ function getAllBooks(req, res, next) {
   if (query) {
     result = db.any("SELECT * FROM books WHERE title = $1 OR genre = $1 OR isbn = $1 OR author_name = $1", [query])
   } else {
-    result = db.any('select * from books')
+    result = db.any('SELECT * FROM books')
   }
 
   result.then(function (data) {
@@ -32,7 +32,7 @@ function getAllBooks(req, res, next) {
   });
 }
 
-function getBooks(req, res, next) {
+function getBook(req, res, next) {
   const bookId = parseInt(req.params.id)
   db.one('select * from books where id = $1', bookId)
   .then(function (data) {
@@ -40,7 +40,7 @@ function getBooks(req, res, next) {
       .json({
         status: 'success',
         data: data,
-        message: 'Retrieved ALL books'
+        message: 'Retrieved book'
       });
   })
   .catch(function (err) {
@@ -108,14 +108,37 @@ function getUser(req, res){
   });
 }
 
-function logIn(req, res){
-  const username = req.params.username;
-  const password = req.params.password;
-  db.any('SELECT * FROM users WHERE username = $1 password = $2', [username, password])
+function logIn(req, res, next){
+  const {username, password} = req.body;
+  console.log(username,password,'<========');
+  db.any('SELECT * FROM users WHERE username = $1 AND password = $2', [username, password])
+  .then(function (data) {
+    console.log(data,'<-data');
+    if(data.length === 1){
+      res.status(200)
+      .json({
+        status: 'success'
+      });
+    } else {
+      res.status(401)
+      .json({
+        status: 'unauthorized'
+      })
+    }
+  })
+  .catch(function (err) {
+    return next(err);
+  });
+}
+
+function signUp(req, res, next){
+  const {username, password} = req.body;
+  db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password])
   .then(function (data) {
     res.status(200)
       .json({
-        status: 'success'
+        status: 'success',
+        message: 'Successfully created user profile'
       });
   })
   .catch(function (err) {
@@ -123,11 +146,14 @@ function logIn(req, res){
   });
 }
 
+
 module.exports = {
   getAllBooks: getAllBooks,
-  getBooks: getBooks,
+  getBook: getBook,
   addBook: addBook,
   updateBook: updateBook,
   deleteBook: deleteBook,
-  getUser: getUser
+  getUser: getUser,
+  signUp: signUp,
+  logIn: logIn
 };

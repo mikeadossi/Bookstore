@@ -99,11 +99,11 @@ export default class SignUp extends React.Component{
               <div className="signup_title">Sign Up</div>
               <div className="signup_input_containers">
                 <div className="signup_labels">username: </div>
-                <input className="signup_email_input signup_input" placeholder="enter email address" onChange={this.saveSignUpUserName}/>
+              <input name="username" className="signup_email_input signup_input" placeholder="enter email address" onChange={this.saveSignUpUserName}/>
               </div>
               <div className="signup_input_containers">
                 <div className="signup_labels">enter password: </div>
-                <input className="signup_password_input signup_input" placeholder="password" onChange={this.saveSignUpPassword}/>
+              <input name="password" className="signup_password_input signup_input" placeholder="password" onChange={this.saveSignUpPassword}/>
               </div>
               <div className="signup_input_containers">
                 <div className="signup_labels">re-enter password: </div>

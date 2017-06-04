@@ -6,7 +6,7 @@ const db = require('../database/queries');
 // 2: create login & register routes
 router.get('/api/bookstore_db', db.getAllBooks);
 
-router.get('/api/bookstore_db/:id', db.getBooks);
+router.get('/api/bookstore_db/:id', db.getBook);
 
 router.post('/api/bookstore_db/', db.addBook);
 
@@ -15,6 +15,10 @@ router.put('/api/bookstore_db/:id/update', db.updateBook);
 router.delete('/api/bookstore_db/:id', db.deleteBook);
 
 router.post('/api/bookstore_db/user/', db.getUser);
+
+router.post('/api/signUp', db.signUp);
+
+router.post('/api/logIn', db.logIn);
 
 //router.post('/api/login', db.getUser);
 
