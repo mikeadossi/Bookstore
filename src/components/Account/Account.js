@@ -11,11 +11,14 @@ export default class Account extends React.Component{
     this.state = {
       query: null,
       searchResult: null,
-      account_add_title: '',
-      account_add_author_name: '',
-      account_add_image_url: '',
-      account_add_description : '',
-      account_add_isbn: ''
+      account_title: '',
+      account_image_url: '',
+      account_author_name: '',
+      account_price: '',
+      account_genre: '',
+      account_publisher: '',
+      account_isbn: '',
+      account_description : '',
     }
     this.handleChange = this.handleChange.bind(this);
     this.searchDb = this.searchDb.bind(this);
@@ -28,7 +31,7 @@ export default class Account extends React.Component{
   }
 
   searchDb() {
-    fetch( 'http://localhost:8080/api/bookstore_db?query=' + this.state.query )
+    fetch( 'http://localhost:8888/api/bookstore_db?query=' + this.state.query )
       .then( result => result.json() )
       .then( json => {
         this.setState({ searchResult: json.data })
@@ -49,17 +52,26 @@ export default class Account extends React.Component{
 
   addNewBook(){
 
-    axios.post('http://localhost:8080/api/bookstore_db', {
-      title : this.state.account_add_title,
-      author_name : this.state.account_author_name
+    axios.post('http://localhost:8888/api/bookstore_db', {
+      title : this.state.account_title,
+      author_name : this.state.account_author_name,
+      list_price : this.state.account_price,
+      genre : this.state.account_genre,
+      publisher : this.state.account_publisher,
+      description : this.state.account_description,
+      isbn : this.state.account_isbn,
+      image_url : this.state.account_image_url
     })
     .then(function (response) {
       this.setState({
-        account_add_title: '',
-        account_add_author_name: '',
-        account_add_image_url: '',
-        account_add_description : '',
-        account_add_isbn: ''
+        account_title: '',
+        account_image_url: '',
+        account_author_name: '',
+        account_price: '',
+        account_genre: '',
+        account_publisher: '',
+        account_isbn: '',
+        account_description : '',
       })
     })
     .catch(function (error) {
@@ -88,11 +100,11 @@ export default class Account extends React.Component{
               <div className={this.state.account_addBook_div} id="account_addBook_container">
                 <div className="account_addbook_divs">
                   <div className="account_label">Book title: </div>
-                  <input name="account_add_title" onChange={this.saveData} />
+                  <input name="account_title" onChange={this.saveData} />
                 </div>
                 <div className="account_addbook_divs">
                   <div className="account_label">Image Url: </div>
-                  <input name="account_image_url"/>
+                  <input name="account_image_url" onChange={this.saveData} />
                 </div>
                 <div className="account_addbook_divs">
                   <div className="account_label">Author name: </div>
@@ -100,23 +112,23 @@ export default class Account extends React.Component{
                 </div>
                 <div className="account_addbook_divs">
                   <div className="account_label">Price: </div>
-                  <input />
+                  <input name="account_price" onChange={this.saveData}/>
                 </div>
                 <div className="account_addbook_divs">
                   <div className="account_label">Genre: </div>
-                  <input />
+                  <input name="account_genre" onChange={this.saveData}/>
                 </div>
                 <div className="account_addbook_divs">
                   <div className="account_label">Publisher: </div>
-                  <input />
+                  <input name="account_publisher" onChange={this.saveData}/>
                 </div>
                 <div className="account_addbook_divs">
                   <div className="account_label">Isbn: </div>
-                  <input />
+                  <input name="account_isbn" onChange={this.saveData}/>
                 </div>
                 <div className="account_addbook_textarea">
                   <div className="account_textarea_label">Description: </div>
-                  <textarea className="account_addBook_textarea"/>
+                  <textarea name="account_description" onChange={this.saveData}/>
                 </div>
                 <button onClick={this.addNewBook}>Add Book</button>
               </div>

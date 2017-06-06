@@ -29,12 +29,23 @@ export default class LogIn extends React.Component{
   }
 handleSubmit(evt){
   evt.preventDefault();
-
-  axios({
+    console.log('this.state =====> ',this.state);
+  // axios.post('http://localhost:8888/api/logIn',{username:this.state.username, password:this.state.password})
+  // ({
+  //   method: 'POST',
+  //   url: 'http://localhost:8888/api/logIn',
+  //   data: this.state
+  // })
+  fetch('http://localhost:8888/api/logIn', {
     method: 'POST',
-    url: 'http://localhost:8888/login',
-    data: this.state
-  })
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    mode: 'no-cors',
+    body: JSON.stringify(this.state)
+  }).then(function(response) {
+    console.log(response.type); // "opaque"
+  });
 }
   render(){
     return(

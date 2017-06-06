@@ -50,8 +50,8 @@ function getBook(req, res, next) {
 }
 
 function addBook(req, res, next){
-  const {title, author_name} = req.body;
-  db.any('INSERT INTO books (title, author_name) VALUES ($1, $2)', [title, author_name])
+  const {title, author_name, genre, image_url, description, isbn, list_price, publisher} = req.body;
+  db.any('INSERT INTO books (title, author_name, genre, image_url, description, isbn, list_price, publisher) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [ title, author_name, genre, image_url, description, isbn, list_price, publisher ])
   .then(function (data) {
     res.status(200)
       .json({
@@ -65,9 +65,28 @@ function addBook(req, res, next){
 }
 
 function updateBook(req, res, next){
-  const {title, author_name} = req.body;
+  const {
+    title,
+    author_name,
+    genre,
+    image_url,
+    description,
+    isbn,
+    list_price,
+    publisher
+  } = req.body;
   const id = req.params.id;
-  db.any('UPDATE books SET title = $2, author_name = $3 WHERE id = $1', [id, title, author_name])
+  db.any('UPDATE books SET title = $2, author_name = $3, genre = $4, image_url = $5, description = $6, isbn = $7, list_price = $8, publisher = $9 WHERE id = $1', [
+    id,
+    title,
+    author_name,
+    genre,
+    image_url,
+    description,
+    isbn,
+    list_price,
+    publisher
+  ])
   .then(function (data) {
     res.status(200)
       .json({
@@ -81,8 +100,10 @@ function updateBook(req, res, next){
 }
 
 function deleteBook(req, res, next){
+  console.log(req,' <======= req');
   const id = req.params.id;
-  db.any('DELETE from books WHERE id = $1', [id])
+  // const id = req.query.id
+  db.none('DELETE from books WHERE id = $1', [id])
   .then(function (data) {
     res.status(200)
       .json({
@@ -148,7 +169,10 @@ function signUp(req, res, next){
   bcrypt.hash(password, 10, function(err, password) {
     console.log(password,'<-- password');
     // Store hash in your password DB.
-    db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password])
+    db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [
+      username,
+      password
+    ])
     .then(function (data) {
       res.status(200)
       .json({

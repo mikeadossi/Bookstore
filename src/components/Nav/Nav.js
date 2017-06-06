@@ -7,6 +7,7 @@ export default class Nav extends React.Component{
   constructor(props){
     super(props)
     this.state = {
+      query : null,
       menu_styling : 'nav_top_hamburger fa fa-bars fa-lg',
       menu_wide_styling : 'nav_hamburger fa fa-bars fa-lg',
       menu_open : 'nav_link_bottom display_none',
@@ -20,6 +21,8 @@ export default class Nav extends React.Component{
     this.toggleSearch = this.toggleSearch.bind(this);
     this.checkIfAuthenticated = this.checkIfAuthenticated.bind(this);
     this.closeSearch = this.closeSearch.bind(this);
+    this.navSearch = this.navSearch.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount(){
@@ -80,6 +83,23 @@ export default class Nav extends React.Component{
     })
   }
 
+  navSearch() {
+    fetch( 'http://localhost:8888/api/bookstore_db?query=' + this.state.query )
+      .then( result => result.json() )
+      .then( json => {
+        this.setState({ searchResult: json.data })
+      })
+      .catch((error) => {
+        this.setState({
+          error: error
+        })
+      })
+  }
+
+  handleChange(event) {
+    this.setState({query: event.target.value})
+  }
+
   render(){
     return(
       <div className="nav_container">
@@ -89,13 +109,22 @@ export default class Nav extends React.Component{
           <div className={this.state.menu_wide_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
           <div className="nav_top_search">
             <input className="nav_input" placeholder="search" />
-            <button className="nav_search_btn">submit</button>
+            <button className="nav_search_btn" onClick={this.navSearch}>submit</button>
           </div>
-          <div className={this.state.search_bar_toggle}>
-            <button className="nav_close_search_toggle fa fa-close fa-lg" onClick={this.closeSearch}></button>
-            <input className="nav_input nav_input_toggle" placeholder="search" />
-            <button className="nav_search_btn">submit</button>
+          <div className="nav_links_container">
+            <div className={this.state.search_bar_toggle}>
+              <button className="nav_close_search_toggle fa fa-close fa-lg" onClick={this.closeSearch}></button>
+              <input className="nav_input nav_input_toggle" placeholder="search" />
+              <button className="nav_search_btn">submit</button>
+            </div>
+            <div className={this.state.menu_open}>
+              <Link to="/logIn"><div className="nav_links">log in</div></Link>
+              <Link to="/signUp"><div className="nav_links">sign up</div></Link>
+              <Link to="/about"><div className="nav_links">about</div></Link>
+              <Link to="/account"><div className="nav_links">account</div></Link>
+            </div>
           </div>
+
           <div className={this.state.menu_styling} aria-hidden="true" onClick={this.toggleMenu}></div>
           <div className="nav_wide_links_container">
             <div id="nav_inauthetnicated_links" className={this.state.nav_logIn_inauthenticated}>
@@ -110,19 +139,15 @@ export default class Nav extends React.Component{
               <Link to="/account" className="nav_wide_links">account</Link>
             </div>
           </div>
-        </div>
-        <div className="nav_links_container">
-          <div className="nav_links nav_links_search">
-            <input className="nav_input" placeholder="search" />
-            <button className="nav_search_btn">submit</button>
-          </div>
           <div className={this.state.menu_open}>
             <Link to="/logIn"><div className="nav_links">log in</div></Link>
             <Link to="/signUp"><div className="nav_links">sign up</div></Link>
             <Link to="/about"><div className="nav_links">about</div></Link>
             <Link to="/account"><div className="nav_links">account</div></Link>
           </div>
+
         </div>
+
       </div>
     );
   };
