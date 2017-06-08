@@ -11,11 +11,12 @@ export default class LogIn extends React.Component{
       username: '',
       password: ''
     }
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.logIn = this.logIn.bind(this);
     this.handleUsernameChange = this.handleUsernameChange.bind(this);
     this.handlePasswordChange = this.handlePasswordChange.bind(this);
 
   }
+
   handleUsernameChange(evt){
     this.setState({
       username: evt.target.value
@@ -27,20 +28,25 @@ export default class LogIn extends React.Component{
       password: evt.target.value
     })
   }
-handleSubmit(evt){
-  evt.preventDefault();
 
-  axios({
-    method: 'POST',
-    url: 'http://localhost:8888/login',
-    data: this.state
-  })
-}
+  logIn(evt){
+    evt.preventDefault();
+    console.log('this.state =====> ',this.state);
+    console.log('handling logIn!!!');
+    axios.post('http://localhost:8888/api/logIn', {
+      username : this.state.username,
+      password : this.state.password,
+    }).then(function(response) {
+      console.log('response.type => ', response.type); // "opaque"
+    });
+    console.log('handled!');
+  }
+
   render(){
     return(
       <div>
         <Nav />
-      <form className="logIn_comp_container" onSubmit={this.handleSubmit} >
+      <form className="logIn_comp_container" onSubmit={this.logIn} >
             <div className="logIn_container">
               <div className="logIn_title">Log In</div>
               <div className="logIn_input_containers">
@@ -51,7 +57,7 @@ handleSubmit(evt){
                 <div className="logIn_labels">enter password: </div>
               <input name='password' value={this.state.password} onChange={this.handlePasswordChange} className="logIn_password_input logIn_input" placeholder="password" />
               </div>
-              <button className="logIn_logIn_submit" type="submit">submit</button>
+              <button className="logIn_submit" type="submit">submit</button>
             </div>
           </form>
         <Footer />

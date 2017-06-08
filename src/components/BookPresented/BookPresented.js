@@ -10,16 +10,16 @@ export default class BookPresented extends React.Component{
 
   renderBook() {
     const { list_price, publisher, id, genre, title, image_url, description, isbn, author_name } = this.props
-    return( <td>
-      <div>
-        <div><Link to={"/details/"+id}><img className="book_cover" src={image_url} /></Link></div>
+    return(
+      <div className="book_presented_cover">
+        <Link to={"/details/"+id}><img className="book_cover" src={image_url} /></Link>
       </div>
-    </td> )
+    )
   }
 
 
   render(){
-    return( <tr>{this.renderBook()}</tr> )
+    return( <div>{this.renderBook()}</div> )
   }
 
 

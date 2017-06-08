@@ -49,7 +49,7 @@ export default class App extends React.Component{
             <Route exact path="/home" component={ Home } />
             <Route exact path="/logIn" component={ LogIn } />
             <Route exact path="/signUp" component={ SignUp } />
-            <Route exact path="/listing" component={ Listing } />
+            <Route exact path="/listing/:query" component={ Listing } />
             <Route exact path="/account" component={ Account } />
             <Route exact path="/details" component={ Details } />
             <Route exact path="/about" component={ About } />

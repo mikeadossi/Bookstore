@@ -23,13 +23,18 @@ router.post('/api/signUp', db.signUp);
 
 //router.post('/api/login', db.getUser);
 
-router.post('/api/logIn',
-  passport.authenticate('local', {
-    successRedirect: 'http://localhost:8080',
-    failureRedirect: 'http://localhost:8080/logIn'
-    // failureFlash: true
-  })
-);
+router.post('/api/logIn', db.logIn);
+  // passport.authenticate('local'), function(req, res, next) {
+  //  var user = req.user;
+  //  console.log('user >>>>>> ',user)
+  //  res.redirect('/')
+  // }
+  // passport.authenticate('local', {
+  //   successRedirect: 'http://localhost:8080',
+  //   failureRedirect: 'http://localhost:8080/logIn'
+  //   // failureFlash: true
+  // })
+//);
 
 
 module.exports = router;

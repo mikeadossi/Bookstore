@@ -3,6 +3,7 @@ import React from 'react';
 import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import Link from 'react-router-dom';
+import axios from 'axios';
 
 export default class SignUp extends React.Component{
 
@@ -27,6 +28,7 @@ export default class SignUp extends React.Component{
   saveSignUpUserName(e){
     e.preventDefault()
     let targetValue = e.target.value;
+    console.log('username --> ',targetValue);
     this.setState({
       signup_username : targetValue
     })
@@ -35,6 +37,7 @@ export default class SignUp extends React.Component{
   saveSignUpPassword(e){
     e.preventDefault()
     let targetValue = e.target.value;
+    console.log('password --> ',targetValue);
     this.setState({
       signup_password : targetValue
     })
@@ -48,8 +51,7 @@ export default class SignUp extends React.Component{
     })
   }
 
-
-  signIn() {
+  signIn(evt) {
     let saveSignUpReenterPassword = this.state.signup_reenter_password;
     let saveSignUpPassword = this.state.signup_password;
     let saveSignUpUserName = this.state.signup_username;
@@ -86,6 +88,18 @@ export default class SignUp extends React.Component{
     this.setState({
       info: info,
       signup_message_div: 'app_displayNone'
+    })
+
+    let state = this.state;
+    state[evt.target.name] = evt.target.value;
+    this.setState(state);
+
+    // handle signup
+    // console.log('signup_password: ',this.state.signup_password);
+    // console.log('signup_username: ',this.state.signup_username);
+    axios.post('http://localhost:8888/api/signUp', {
+      username : this.state.signup_username,
+      password : this.state.signup_password
     })
 
   }

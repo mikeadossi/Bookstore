@@ -33,7 +33,7 @@ export default class IndividualBook extends React.Component{
     const {id} = this.state;
     delete updatedBook.id
 
-    axios.put(`http://localhost:8080/api/bookstore_db/${id}/update`,
+    axios.put(`http://localhost:8888/api/bookstore_db/${id}/update`,
       updatedBook
     )
     .then(function (response) {
@@ -47,11 +47,10 @@ export default class IndividualBook extends React.Component{
   deleteBook(){
     const {id} = this.state;
 
-    axios.delete(`http://localhost:8080/api/bookstore_db/${id}`)
+    axios.delete(`http://localhost:8888/api/bookstore_db/${id}`)
     .then(function (response) {
       console.log('deleted ',response);
     })
-    .then( location.reload() )
     .catch(function (error) {
       console.log(error);
     });
@@ -86,16 +85,13 @@ export default class IndividualBook extends React.Component{
         </div>
         <br/>
         <div>
-          <textarea className="individualBook_description" value={description} name="description" onChange={this.saveData}/>
+          <textarea className="app_textarea" value={description} name="description" onChange={this.saveData}/>
         </div>
         <div>
-          <button className="individualBook_edit individualBook_btns">
-            Edit
-          </button>
           <button className="individualBook_save_changes individualBook_btns" onClick={this.updateBook}>
             Save Changes
           </button>
-          <button className="individualBook_delete individualBook_btns" onClick={() => {if(confirm('Delete the item?')) {this.deleteBook()};}}>
+          <button className="individualBook_delete individualBook_btns" onClick={() => {if(confirm('Are you sure you want to delete this book?')) {this.deleteBook()};}}>
             Delete
           </button>
         </div>

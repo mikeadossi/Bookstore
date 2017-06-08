@@ -16,8 +16,10 @@ function getAllBooks(req, res, next) {
 
   if (query) {
     result = db.any("SELECT * FROM books WHERE title = $1 OR genre = $1 OR isbn = $1 OR author_name = $1", [query])
+    console.log('************ query => ',query);
   } else {
     result = db.any('SELECT * FROM books')
+    console.log('********** no query!!!');
   }
 
   result.then(function (data) {
@@ -50,8 +52,8 @@ function getBook(req, res, next) {
 }
 
 function addBook(req, res, next){
-  const {title, author_name} = req.body;
-  db.any('INSERT INTO books (title, author_name) VALUES ($1, $2)', [title, author_name])
+  const {title, author_name, genre, image_url, description, isbn, list_price, publisher} = req.body;
+  db.any('INSERT INTO books (title, author_name, genre, image_url, description, isbn, list_price, publisher) VALUES ($1, $2, $3, $4, $5, $6, $7, $8)', [ title, author_name, genre, image_url, description, isbn, list_price, publisher ])
   .then(function (data) {
     res.status(200)
       .json({
@@ -65,9 +67,28 @@ function addBook(req, res, next){
 }
 
 function updateBook(req, res, next){
-  const {title, author_name} = req.body;
+  const {
+    title,
+    author_name,
+    genre,
+    image_url,
+    description,
+    isbn,
+    list_price,
+    publisher
+  } = req.body;
   const id = req.params.id;
-  db.any('UPDATE books SET title = $2, author_name = $3 WHERE id = $1', [id, title, author_name])
+  db.any('UPDATE books SET title = $2, author_name = $3, genre = $4, image_url = $5, description = $6, isbn = $7, list_price = $8, publisher = $9 WHERE id = $1', [
+    id,
+    title,
+    author_name,
+    genre,
+    image_url,
+    description,
+    isbn,
+    list_price,
+    publisher
+  ])
   .then(function (data) {
     res.status(200)
       .json({
@@ -81,8 +102,10 @@ function updateBook(req, res, next){
 }
 
 function deleteBook(req, res, next){
+  console.log(req,' <======= req');
   const id = req.params.id;
-  db.any('DELETE from books WHERE id = $1', [id])
+  // const id = req.query.id
+  db.none('DELETE from books WHERE id = $1', [id])
   .then(function (data) {
     res.status(200)
       .json({
@@ -112,33 +135,30 @@ function getUser(req, res){
 function logIn(req, res, next){
   const {username, password} = req.body;
   // console.log(username,password,'<========');
-  db.any('SELECT * FROM users WHERE username = $1', [username])
+  db.one('SELECT * FROM users WHERE username = $1', [username])
   .then(function (data) {
     console.log(data,'<-data');
-    if(data.length === 1){
-      bcrypt.compare(password, data[0].password).then(function(matched) {
-          // res == true
-          console.log('res: ',res);
-        if(matched){
-          res.status(200)
-          .json({
-            status: 'successful log in'
-          });
-        } else {
-          res.status(401)
-          .json({
-            status: 'not matching'
-          });
-        }
-      });
-    } else {
-      res.status(401)
-      .json({
-        status: 'unauthorized'
-      })
-    }
+
+    bcrypt.compare(password, data.password).then(function(matched) {
+        // res == true
+        console.log('res: ',res);
+      if(matched){
+        res.status(200)
+        .json({
+          status: 'successful log in'
+        });
+        console.log('-----------> successful log in !!!!! <---------------');
+      } else {
+        res.status(401)
+        .json({
+          status: 'not matching'
+        });
+        console.log('-----------> not matching !!!!! <---------------');
+      }
+    });
   })
   .catch(function (err) {
+    console.log('err --> ',err); // pass error back to react ...
     return next(err);
   });
 }
@@ -148,7 +168,10 @@ function signUp(req, res, next){
   bcrypt.hash(password, 10, function(err, password) {
     console.log(password,'<-- password');
     // Store hash in your password DB.
-    db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [username, password])
+    db.any('INSERT INTO users (username, password) VALUES ($1, $2)', [
+      username,
+      password
+    ])
     .then(function (data) {
       res.status(200)
       .json({
