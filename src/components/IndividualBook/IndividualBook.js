@@ -85,7 +85,7 @@ export default class IndividualBook extends React.Component{
         </div>
         <br/>
         <div>
-          <textarea className="individualBook_description" value={description} name="description" onChange={this.saveData}/>
+          <textarea className="app_textarea" value={description} name="description" onChange={this.saveData}/>
         </div>
         <div>
           <button className="individualBook_save_changes individualBook_btns" onClick={this.updateBook}>

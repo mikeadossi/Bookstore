@@ -49,7 +49,6 @@ export default class Account extends React.Component{
     this.setState(state);
   }
 
-
   addNewBook(){
 
     axios.post('http://localhost:8888/api/bookstore_db', {
@@ -78,7 +77,6 @@ export default class Account extends React.Component{
 
     });
   }
-
 
   renderResult() {
     if (!this.state.searchResult) { return; }
@@ -128,7 +126,7 @@ export default class Account extends React.Component{
                 </div>
                 <div className="account_addbook_textarea">
                   <div className="account_textarea_label">Description: </div>
-                  <textarea name="account_description" onChange={this.saveData}/>
+                  <textarea name="account_description" className="app_textarea" onChange={this.saveData}/>
                 </div>
                 <button onClick={this.addNewBook}>Add Book</button>
               </div>

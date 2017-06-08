@@ -18,11 +18,9 @@ export default class HomeBookList extends React.Component{
   render() {
 
     return(
-      <table>
-        <tbody>
-          {this.renderItems()}
-        </tbody>
-      </table>
+      <div className="bookList_presented_container">
+        {this.renderItems()}
+      </div>
     );
   }
 }

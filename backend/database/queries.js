@@ -16,8 +16,10 @@ function getAllBooks(req, res, next) {
 
   if (query) {
     result = db.any("SELECT * FROM books WHERE title = $1 OR genre = $1 OR isbn = $1 OR author_name = $1", [query])
+    console.log('************ query => ',query);
   } else {
     result = db.any('SELECT * FROM books')
+    console.log('********** no query!!!');
   }
 
   result.then(function (data) {
@@ -133,33 +135,30 @@ function getUser(req, res){
 function logIn(req, res, next){
   const {username, password} = req.body;
   // console.log(username,password,'<========');
-  db.any('SELECT * FROM users WHERE username = $1', [username])
+  db.one('SELECT * FROM users WHERE username = $1', [username])
   .then(function (data) {
     console.log(data,'<-data');
-    if(data.length === 1){
-      bcrypt.compare(password, data[0].password).then(function(matched) {
-          // res == true
-          console.log('res: ',res);
-        if(matched){
-          res.status(200)
-          .json({
-            status: 'successful log in'
-          });
-        } else {
-          res.status(401)
-          .json({
-            status: 'not matching'
-          });
-        }
-      });
-    } else {
-      res.status(401)
-      .json({
-        status: 'unauthorized'
-      })
-    }
+
+    bcrypt.compare(password, data.password).then(function(matched) {
+        // res == true
+        console.log('res: ',res);
+      if(matched){
+        res.status(200)
+        .json({
+          status: 'successful log in'
+        });
+        console.log('-----------> successful log in !!!!! <---------------');
+      } else {
+        res.status(401)
+        .json({
+          status: 'not matching'
+        });
+        console.log('-----------> not matching !!!!! <---------------');
+      }
+    });
   })
   .catch(function (err) {
+    console.log('err --> ',err); // pass error back to react ...
     return next(err);
   });
 }
