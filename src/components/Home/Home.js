@@ -12,32 +12,31 @@ export default class Home extends React.Component{
   constructor(props){
     super(props)
     this.state = {
-      current_slide : '1'
+      current_slide : '0',
+      dot : [
+        'home_carousel_dot_one fa fa-dot-circle-o',
+        'home_carousel_dot_one fa fa-circle-o',
+        'home_carousel_dot_one fa fa-circle-o',
+        'home_carousel_dot_one fa fa-circle-o'
+      ]
     }
 
-    this.slideLeft = this.slideLeft.bind(this);
-    this.slideRight = this.slideRight.bind(this);
     this.carouselSlide = this.carouselSlide.bind(this);
     this.renderSlide = this.renderSlide.bind(this);
-  }
-
-  slideLeft(){
-    console.log('left')
-  }
-
-  slideRight(){
-    console.log('right')
+    this.setDot = this.setDot.bind(this);
   }
 
   renderSlide(){
-    let slides = {
-      zero : <div className="home_carousel_image home_carousel_one"><div className="home_carousel_content">Slide 1</div></div>,
-      one : <div className="home_carousel_image home_carousel_two"><div className="home_carousel_content">Slide 2</div></div>,
-      two : <div className="home_carousel_image home_carousel_three"><div className="home_carousel_content">Slide 3</div></div>,
-      four : <div className="home_carousel_image home_carousel_four"><div className="home_carousel_content">Slide 4</div></div>
-    }
     let {current_slide} = this.state;
-    console.log('>>>>>>> ',slides[Object.keys(slides)[current_slide]]);
+
+    let slides = {
+      zero : <div className="home_carousel_image home_carousel_one"><div className="home_carousel_content">Slide 0</div></div>,
+      one : <div className="home_carousel_image home_carousel_two"><div className="home_carousel_content">Slide 1</div></div>,
+      two : <div className="home_carousel_image home_carousel_three"><div className="home_carousel_content">Slide 2</div></div>,
+      four : <div className="home_carousel_image home_carousel_four"><div className="home_carousel_content">Slide 3</div></div>
+    }
+    // let {current_slide} = this.state;
+    // console.log('>>>>>>> ',slides[Object.keys(slides)[current_slide]]);
     return(
       <div>
         {slides[Object.keys(slides)[current_slide]]}
@@ -45,26 +44,58 @@ export default class Home extends React.Component{
     )
   }
 
+  setDot(num){
+    let {current_slide} = this.state; // 2
+    // let num = num; // 3
+    let dot = [
+      'home_carousel_dot_one fa fa-circle-o',
+      'home_carousel_dot_one fa fa-circle-o',
+      'home_carousel_dot_one fa fa-circle-o',
+      'home_carousel_dot_one fa fa-circle-o'
+    ]
+    dot[num] = 'home_carousel_dot_one fa fa-dot-circle-o';
+    console.log('slide ',num);
+    console.log('dot[',num,'] ----------> ',dot[num]);
+
+    this.setState({
+      dot : dot,
+      current_slide : num
+    })
+  }
+
   carouselSlide(operator){
     let {current_slide} = this.state;
-    if ( current_slide === 3 && operator === '+'){
+    let dot = [
+      'home_carousel_dot_one fa fa-circle-o',
+      'home_carousel_dot_one fa fa-circle-o',
+      'home_carousel_dot_one fa fa-circle-o',
+      'home_carousel_dot_one fa fa-circle-o'
+    ]
+
+    if ( current_slide > 2 && operator === '+'){
       current_slide = 0;
+      dot[current_slide] = 'home_carousel_dot_one fa fa-dot-circle-o';
       this.setState({
-        current_slide : current_slide
+        current_slide : current_slide,
+        dot : dot
       })
-      console.log('FORWARD current_slide => ',current_slide)
-    } else if ( current_slide === 0 && operator === '-' ){
-      current_slide = 3
+      console.log('this.state.current_slide -> ',this.state.current_slide);
+    } else if ( current_slide < 1 && operator === '-' ){
+      current_slide = 3;
+      dot[current_slide] = 'home_carousel_dot_one fa fa-dot-circle-o';
       this.setState({
-        current_slide : current_slide
+        current_slide : current_slide,
+        dot : dot
       })
-      console.log('BACK current_slide => ',current_slide)
+      console.log('this.state.current_slide -> ',this.state.current_slide);
     } else {
       current_slide = eval( current_slide + operator + 1 )
+      dot[current_slide] = 'home_carousel_dot_one fa fa-dot-circle-o';
       this.setState({
-        current_slide : current_slide
+        current_slide : current_slide,
+        dot : dot
       })
-      console.log('ADD current_slide => ',current_slide)
+      console.log('this.state.current_slide -> ',this.state.current_slide);
     }
   }
 
@@ -89,10 +120,10 @@ export default class Home extends React.Component{
             </div>
 
             <div className="home_carousel_dots_container">
-              <i className="home_carousel_dot_one fa fa-circle-o" aria-hidden="true"></i>
-              <i className="home_carousel_dot_two fa fa-circle-o" aria-hidden="true"></i>
-              <i className="home_carousel_dot_three fa fa-circle-o" aria-hidden="true"></i>
-              <i className="home_carousel_dot_four fa fa-circle-o" aria-hidden="true"></i>
+              <i className={this.state.dot[0]} aria-hidden="true" onClick={() => this.setDot('0')}></i>
+              <i className={this.state.dot[1]} aria-hidden="true" onClick={() => this.setDot('1')}></i>
+              <i className={this.state.dot[2]} aria-hidden="true" onClick={() => this.setDot('2')}></i>
+              <i className={this.state.dot[3]} aria-hidden="true" onClick={() => this.setDot('3')}></i>
             </div>
 
             <HomeBookList allBooks={this.props.allBooks}/>
