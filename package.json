@@ -37,6 +37,7 @@
     "react-history": "*",
     "react-router": "^4.0.0",
     "react-router-dom": "*",
+    "react-slick": "^0.14.11",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   }
