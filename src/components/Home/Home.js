@@ -35,8 +35,6 @@ export default class Home extends React.Component{
       two : <div className="home_carousel_image home_carousel_three"><div className="home_carousel_content">Slide 2</div></div>,
       four : <div className="home_carousel_image home_carousel_four"><div className="home_carousel_content">Slide 3</div></div>
     }
-    // let {current_slide} = this.state;
-    // console.log('>>>>>>> ',slides[Object.keys(slides)[current_slide]]);
     return(
       <div>
         {slides[Object.keys(slides)[current_slide]]}
@@ -45,8 +43,7 @@ export default class Home extends React.Component{
   }
 
   setDot(num){
-    let {current_slide} = this.state; // 2
-    // let num = num; // 3
+    let {current_slide} = this.state;
     let dot = [
       'home_carousel_dot_one fa fa-circle-o',
       'home_carousel_dot_one fa fa-circle-o',
@@ -54,8 +51,6 @@ export default class Home extends React.Component{
       'home_carousel_dot_one fa fa-circle-o'
     ]
     dot[num] = 'home_carousel_dot_one fa fa-dot-circle-o';
-    console.log('slide ',num);
-    console.log('dot[',num,'] ----------> ',dot[num]);
 
     this.setState({
       dot : dot,
@@ -79,7 +74,6 @@ export default class Home extends React.Component{
         current_slide : current_slide,
         dot : dot
       })
-      console.log('this.state.current_slide -> ',this.state.current_slide);
     } else if ( current_slide < 1 && operator === '-' ){
       current_slide = 3;
       dot[current_slide] = 'home_carousel_dot_one fa fa-dot-circle-o';
@@ -87,7 +81,6 @@ export default class Home extends React.Component{
         current_slide : current_slide,
         dot : dot
       })
-      console.log('this.state.current_slide -> ',this.state.current_slide);
     } else {
       current_slide = eval( current_slide + operator + 1 )
       dot[current_slide] = 'home_carousel_dot_one fa fa-dot-circle-o';
@@ -95,7 +88,6 @@ export default class Home extends React.Component{
         current_slide : current_slide,
         dot : dot
       })
-      console.log('this.state.current_slide -> ',this.state.current_slide);
     }
   }
 
