@@ -1,38 +1,14 @@
-.bookList_presented_container{
-  display: flex;
-  flex-wrap: wrap;
-  margin: auto;
-  width: 80%;
-}
-
 .book_presented_cover{
-  padding:14%;
   width:161px;
+  display:inline-block;
 }
 
-@media (min-width: 300px) and (max-width:460px) {
-  .home_container{
-    background-color:grey;
-  }
-  .book_presented_cover{
-    padding:16%;
-  }
+.bookList_presented_container{
+  padding:4%;
+  text-align:center;
 }
 
-@media (min-width: 460px) and (max-width:599px) {
-  .home_container{
-    background-color:orange;
-  }
-  .book_presented_cover{
-    padding:9%;
-  }
-}
-
-@media (min-width: 599px) and (max-width:849px) {
-  .home_container{
-    background-color:skyblue;
-  }
-  .book_presented_cover{
-    padding:9%;
-  }
+.book_rendered_covers{
+  display:inline-block;
+  padding:3%;
 }

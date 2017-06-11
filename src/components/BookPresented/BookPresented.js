@@ -19,7 +19,7 @@ export default class BookPresented extends React.Component{
 
 
   render(){
-    return( <div>{this.renderBook()}</div> )
+    return( <div className="book_rendered_covers">{this.renderBook()}</div> )
   }
 
 
