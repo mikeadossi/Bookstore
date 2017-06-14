@@ -27,6 +27,9 @@ module.exports = {
         },
       ]
     },
+    devServer: {
+      historyApiFallback: true
+    },
     plugins: [ // add plugins independent of webpack
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoErrorsPlugin()

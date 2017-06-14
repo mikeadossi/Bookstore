@@ -1,5 +1,8 @@
 const promise = require('bluebird');
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const dotenv = require('dotenv');
+dotenv.config();
 
 const options = {
   promiseLib: promise
@@ -143,9 +146,11 @@ function logIn(req, res, next){
         // res == true
         console.log('res: ',res);
       if(matched){
+        const token = jwt.sign({ username: username}, process.env.SECRET);
         res.status(200)
         .json({
-          status: 'successful log in'
+          status: 'successful log in',
+          token: token
         });
         console.log('-----------> successful log in !!!!! <---------------');
       } else {

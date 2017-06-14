@@ -1,6 +1,7 @@
 import './nav.css'
 import React from 'react';
 import { Link }  from 'react-router-dom';
+import Auth from './../../Helpers/Auth.js';
 
 export default class Nav extends React.Component{
 
@@ -12,7 +13,7 @@ export default class Nav extends React.Component{
       menu_wide_styling : 'nav_hamburger fa fa-bars fa-lg',
       menu_open : 'nav_link_bottom display_none',
       nav_logIn_inauthenticated : 'display_inline_block',
-      nav_logIn_authenticated : 'display_none',
+      nav_logIn_authenticated : 'display_inline_block',
       search_icon : 'nav_search_icon fa fa-search fa-lg display_block',
       search_bar_toggle : 'nav_top_search_toggle display_none'
     }
@@ -23,10 +24,16 @@ export default class Nav extends React.Component{
     this.closeSearch = this.closeSearch.bind(this);
     this.navSearch = this.navSearch.bind(this);
     this.handleChange = this.handleChange.bind(this);
+    this.logOut = this.logOut.bind(this);
   }
 
   componentDidMount(){
     //checkIfAuthenticated();
+  }
+
+  logOut(){
+    Auth.logout()
+    console.log('logged out');
   }
 
   toggleMenu(){
@@ -74,13 +81,24 @@ export default class Nav extends React.Component{
   }
 
   checkIfAuthenticated(){
-    let displayA;
-    let displayB;
+    // let displayA;
+    // let displayB;
+    if(!Auth.isLoggedIn()) {
+      this.setState({
+        nav_logIn_inauthenticated : 'display_inline_block',
+        nav_logIn_authenticated : 'display_none'
+      })
+    } else {
+      this.setState({
+        nav_logIn_inauthenticated : 'display_none',
+        nav_logIn_authenticated : 'display_inline_block'
+      })
+    }
     //!isAuthenticated ? displayA = "display_block" && displayB = "display_none" : displayA = "display_none" && displayB = "display_block";
-    this.setState({
-      nav_logIn_inauthenticated : displayA,
-      nav_logIn_authenticated : displayB
-    })
+    // this.setState({
+    //   nav_logIn_inauthenticated : displayA,
+    //   nav_logIn_authenticated : displayB
+    // })
   }
 
   navSearch() {
@@ -122,6 +140,7 @@ export default class Nav extends React.Component{
               <Link to="/signUp"><div className="nav_links">sign up</div></Link>
               <Link to="/about"><div className="nav_links">about</div></Link>
               <Link to="/account"><div className="nav_links">account</div></Link>
+              <Link to='#'><div className="nav_links" onClick={this.logOut}>log out</div></Link>
             </div>
           </div>
 
@@ -132,7 +151,7 @@ export default class Nav extends React.Component{
               <Link to="/signUp" className="nav_wide_links">sign up</Link>
             </div>
             <div className={this.state.nav_logIn_authenticated}>
-              <Link to="/signUp" className="nav_wide_links">log out</Link>
+              <Link to="#" className="nav_wide_links" onClick={this.logOut}>log out</Link>
             </div>
             <Link to="/about" className="nav_wide_links">about</Link>
             <div className={this.state.nav_logIn_inauthenticated}>
