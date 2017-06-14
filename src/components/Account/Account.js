@@ -4,6 +4,11 @@ import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import IndividualBook from 'components/IndividualBook/IndividualBook';
 import axios from 'axios';
+import Auth from './../../Helpers/Auth';
+
+if(!Auth.isLoggedIn()) {
+  // window.location.href = '/login';
+}
 
 export default class Account extends React.Component{
   constructor(props) {

@@ -3,6 +3,7 @@ import React from 'react';
 import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import axios from 'axios';
+const jwt_decode = require('jwt-decode');
 
 export default class LogIn extends React.Component{
   constructor(props){
@@ -38,6 +39,13 @@ export default class LogIn extends React.Component{
       password : this.state.password,
     }).then(function(response) {
       console.log('response.type => ', response.type); // "opaque"
+      const jwtToken = response.data.token;
+      const decoded = jwt_decode(jwtToken);
+
+      window.localStorage.setItem('token', jwtToken);
+      window.localStorage.setItem('username', decoded.username);
+
+
     });
     console.log('handled!');
   }

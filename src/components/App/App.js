@@ -13,6 +13,8 @@ import About from 'components/About/About';
 import BooksList from 'components/BooksList/BooksList';
 import HomeBookList from 'components/HomeBookList/HomeBookList';
 import { Link, Route, BrowserRouter, Switch } from 'react-router-dom';
+import axios from 'axios';
+axios.defaults.headers.common['authorization'] = window.localStorage.getItem('token');
 
 export default class App extends React.Component{
   constructor(props) {
@@ -24,7 +26,7 @@ export default class App extends React.Component{
   }
 
   componentDidMount(){
-    fetch( 'http://localhost:8888/api/bookstore_db' )
+    axios.get( 'http://localhost:8888/api/bookstore_db' )
       .then( result => result.json() )
       .then( json => {
         this.setState({ allBooks: json.data })

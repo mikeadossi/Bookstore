@@ -4,7 +4,6 @@ import Nav from 'components/Nav/Nav';
 import Footer from 'components/Footer/Footer';
 import HomeBookList from 'components/HomeBookList/HomeBookList';
 import BooksList from 'components/BooksList/BooksList';
-import {Motion, spring} from 'react-motion';
 import slider from 'react-slick';
 
 export default class Home extends React.Component{
